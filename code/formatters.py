@@ -59,18 +59,19 @@ formatters_dict = {
     "camel": (True, lambda i, word, _: word if i == 0 else word.capitalize()),
     "hammer": (True, lambda i, word, _: word.capitalize()),
     "snake": (True, lambda i, word, _: word.lower() if i == 0 else "_" + word.lower()),
-    "smash": (True, lambda i, word, _: word),
-    "kebab": (True, lambda i, word, _: word if i == 0 else "-" + word),
+    "gum": (True, lambda i, word, _: word),
+    "spine": (True, lambda i, word, _: word if i == 0 else "-" + word),
     "packed": (True, lambda i, word, _: word if i == 0 else "::" + word),
     "allcaps": (False, lambda i, word, _: word.upper()),
     "alldown": (False, lambda i, word, _: word.lower()),
     "dubstring": (False, surround('"')),
     "string": (False, surround("'")),
     "padded": (False, surround(" ")),
-    "dotted": (True, lambda i, word, _: word if i == 0 else "." + word),
-    "slasher": (True, lambda i, word, _: "/" + word),
-    "sentence": (False, lambda i, word, _: word.capitalize() if i == 0 else word),
-    "title": (
+    "pebble": (True, lambda i, word, _: word if i == 0 else "." + word),
+    "incline": (True, lambda i, word, _: "/" + word),
+    "descend": (True, lambda i, word, _: "\\" + word),
+    "speak": (False, lambda i, word, _: word.capitalize() if i == 0 else word),
+    "tie": (
         False,
         lambda i, word, _: word.capitalize()
         if i == 0 or word not in words_to_keep_lowercase
