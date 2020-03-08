@@ -4,7 +4,10 @@ from typing import List, Union
 ctx = Context()
 key = actions.key
 
-words_to_keep_lowercase = "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(",")
+words_to_keep_lowercase = "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(
+    ","
+)
+
 
 def surround(by):
     def func(i, word, last):
@@ -15,6 +18,7 @@ def surround(by):
         return word
 
     return func
+
 
 def FormatText(m, fmtrs):
     if m._words[-1] == "over":
@@ -28,8 +32,9 @@ def FormatText(m, fmtrs):
         words = s.get().split(" ")
         if not words:
             return
-    
+
     return format_text_helper(words, fmtrs)
+
 
 def format_text_helper(words, fmtrs):
     tmp = []
@@ -47,11 +52,12 @@ def format_text_helper(words, fmtrs):
         sep = ""
     return sep.join(words)
 
+
 formatters_dict = {
     # True -> no separator
     "dunder": (True, lambda i, word, _: "__%s__" % word if i == 0 else word),
     "camel": (True, lambda i, word, _: word if i == 0 else word.capitalize()),
-    "hammer" : (True, lambda i, word, _: word.capitalize()),
+    "hammer": (True, lambda i, word, _: word.capitalize()),
     "snake": (True, lambda i, word, _: word.lower() if i == 0 else "_" + word.lower()),
     "smash": (True, lambda i, word, _: word),
     "kebab": (True, lambda i, word, _: word if i == 0 else "-" + word),
@@ -64,19 +70,27 @@ formatters_dict = {
     "dotted": (True, lambda i, word, _: word if i == 0 else "." + word),
     "slasher": (True, lambda i, word, _: "/" + word),
     "sentence": (False, lambda i, word, _: word.capitalize() if i == 0 else word),
-    "title": (False, lambda i, word, _:  word.capitalize() if i == 0 or word not in words_to_keep_lowercase else word)
+    "title": (
+        False,
+        lambda i, word, _: word.capitalize()
+        if i == 0 or word not in words_to_keep_lowercase
+        else word,
+    ),
 }
 
 mod = Module()
-mod.list('formatters', desc='list of formatters')
+mod.list("formatters", desc="list of formatters")
+
 
 @mod.capture
 def formatters(m) -> List[str]:
     "Returns a list of formatters"
 
+
 @mod.capture
 def format_text(m) -> str:
     "Formats the text and returns a string"
+
 
 @mod.action_class
 class Actions:
@@ -86,13 +100,16 @@ class Actions:
             return format_text_helper(text, fmtrs)
         else:
             return format_text_helper([text], fmtrs)
-        
-@ctx.capture(rule='{self.formatters}+')
+
+
+@ctx.capture(rule="{self.formatters}+")
 def formatters(m):
     return m.formatters
- 
-@ctx.capture(rule='<self.formatters> <dgndictation>')
+
+
+@ctx.capture(rule="<self.formatters> <dgndictation>")
 def format_text(m):
     return FormatText(m.dgndictation, m.formatters)
 
-ctx.lists['self.formatters'] = formatters_dict.keys()
+
+ctx.lists["self.formatters"] = formatters_dict.keys()
