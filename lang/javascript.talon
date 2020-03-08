@@ -16,9 +16,6 @@ action(user.code_switch):
 action(user.code_case):
   insert("case :")
   
-action(user.code_break):
-  insert("break")
-  
 action(user.code_do_loop):
   insert("do {")
   key(enter)
@@ -49,6 +46,9 @@ action(user.code_to_float):
   
 action(user.code_to_string):
   insert("String(")
+
+action(user.code_to_boolean):
+  insert("Boolean(")
   
 action(user.code_and):
   insert(" && ")

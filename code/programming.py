@@ -21,12 +21,6 @@ class Actions:
     def code_case():
         """case"""
 
-    def code_break():
-        """break"""
-
-    def code_do_loop():
-        """do_loop"""
-
     def code_while_loop():
         """while_loop"""
 

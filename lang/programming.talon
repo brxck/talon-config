@@ -9,13 +9,7 @@ switchy:
     user.code_switch()
 case of:
     user.code_case()
-breaker:
-    user.code_break()
-defraud:
-    user.code_default()
 
-do loop:
-    user.code_do_loop()
 while loop:
     user.code_while_loop()
 for loop:
@@ -36,6 +30,8 @@ to float:
     user.code_to_float()
 to string:
     user.code_to_string()
+to bool:
+    user.code_to_boolean()
 
 lodge and:
     user.code_and()
