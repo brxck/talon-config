@@ -1,62 +1,106 @@
-question [mark]: "?"
-tilde: "~"
-(bang | exclamation point): "!"
-dollar [sign]: "$"
-(downscore | underscore): "_"
-colon: ":"
-(paren | left paren): "("
-(rparen | are paren | right paren): ")"
-(bracket | brack | left bracket): "{"
-(rbrack | are bracket | right bracket): "}"
-(angle | left angle | less than): "<"
-(rangle | are angle | right angle | greater than): ">"
-(star | asterisk): "*"
-(pound | hash [sign] | octo | thorpe | number sign): "#"
-percent [sign]: "%"
-caret: "^"
-at sign: "@"
-(and sign | ampersand ): "&"
-pipe: "|"
-(dubquote | double quote): '"'
-triple quote: "'''"
-(dot dot | dotdot): ".."
-ellipses: "…"
-comma and: ", "
-plus: "+"
-arrow: "->"
-dub arrow: "=>"
-op dub: " => "
-(op | pad) colon: " : "
-indirect: "&"
-dereference: "*"
-(op equals | assign): " = "
-op (minus | subtract | sub): " - "
-op (plus | add): " + "
-op (times | multiply): " * "
-op divide: " / "
-op mod: " % "
-[op] (minus | subtract | sub) equals: " -= "
-[op] (plus | add) equals: " += "
-[op] (times | multiply) equals: " *= "
-[op] divide equals: " /= "
-[op] mod equals: " %= "
-(op | is) greater [than]: " > "
-(op | is) less [than]: " < "
-(op | is) equal: " == "
-(op | is) not equal: " != "
-(op | is) greater [than] or equal: " >= "
-(op | is) less [than] or equal: " <= "
-(op (power | exponent) | to the power [of]): " ** "
-(op | logical) and: " && "
-op or: " || "
-[op] (logical | bitwise) and: " & "
-[op] bitwise or: " | "
-[op] logical or: " || "
-(op | logical | bitwise) (ex | exclusive) or: " ^ "
-[(op | logical | bitwise)] (left shift | shift left): " << "
-[(op | logical | bitwise)] (right shift | shift right): " >> "
-(op | logical | bitwise) and equals: " &= "
-(op | logical | bitwise) or equals: " |= "
-(op | logical | bitwise) (ex | exclusive) or equals: " ^= "
-[(op | logical | bitwise)] (left shift | shift left) equals: " <<= "
-[(op | logical | bitwise)] (left right | shift right) equals: " >>= "
+void:
+	insert(" ")
+bang:
+	insert("!")
+quote:
+  insert('"')
+amper:
+	insert("&")
+pound:
+	insert("#")
+doll:
+	insert("$")
+percy:
+	insert("%")
+smote:
+	insert("'")
+splat:
+	insert("*")
+cross:
+	insert("+")
+equit:
+	insert("=")
+dit:
+	insert(",")
+dash:
+	insert("-")
+dot:
+	insert(".")
+slash:
+	insert("/")
+cat:
+	insert(":")
+semi:
+	insert(";")
+quell:
+	insert("?")
+insta:
+	insert("@")
+clash:
+	insert("\\")
+carrot:
+	insert("^")
+flat:
+	insert("_")
+smite:
+	insert("`")
+bar:
+	insert("|")
+wave:
+	insert("~")
+assign:
+	insert(" = ")
+plus:
+	insert(" + ")
+minus:
+	insert(" - ")
+divide:
+	insert(" / ")
+modulo:
+	insert(" % ")
+coy:
+	insert(": ")
+drip:
+	insert(", ")
+boom:
+	insert(". ")
+bend:
+	insert("(")
+rend:
+	insert(")")
+angle:
+	insert("<")
+rangle:
+	insert(">")
+ace:
+	insert("[")
+race:
+	insert("]")
+burl:
+	insert("{")
+curl:
+	insert("}")
+less than:
+	insert(" < ")
+less equals:
+	insert(" <= ")
+strict equals:
+	insert(" === ")
+not strict equals:
+	insert(" !== ")
+equals:
+	insert(" == ")
+not equals:
+	insert(" != ")
+greater than:
+	insert(" > ")
+greater equals:
+	insert(" >= ")
+plus equals:
+	insert(" += ")
+minus equals:
+	insert(" -= ")
+plus plus:
+	insert("++ ")
+minus minus:
+	insert("-- ")
