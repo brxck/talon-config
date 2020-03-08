@@ -83,61 +83,6 @@ ctx.lists["self.modifier"] = {
 }
 
 ctx.lists["self.letter"] = dict(zip(default_alphabet, letters_string))
-ctx.lists["self.symbol"] = {
-    "slam": " ",
-    "bang": "!",
-    "quote": '"',
-    "amper": "&",
-    "pound": "#",
-    "doll": "$",
-    "percy": "%",
-    "smote": "'",
-    "splat": "*",
-    "cross": "+",
-    "equit": "=",
-    "dit": ",",
-    "dash": "-",
-    "dot": ".",
-    "slash": "/",
-    "cat": ":",
-    "semi": ";",
-    "quell": "?",
-    "insta": "@",
-    "clash": "\\",
-    "carrot": "^",
-    "flat": "_",
-    "smite": "`",
-    "bar": "|",
-    "wave": "~",
-    "assign": " = ",
-    "plus": " + ",
-    "minus": " - ",
-    "divide": " / ",
-    "modulo": " % ",
-    "coy": ": ",
-    "drip": ", ",
-    "boom": ". ",
-    "bend": "(",
-    "rend": ")",
-    "angle": "<",
-    "rangle": ">",
-    "ace": "[",
-    "race": "]",
-    "burl": "{",
-    "curl": "}",
-    "less than": " < ",
-    "less equals": " <= ",
-    "strict equals": " === ",
-    "not strict equals": " !== ",
-    "equals": " == ",
-    "not equals": " != ",
-    "greater than": " > ",
-    "greater equals": " >= ",
-    "plus equals": " += ",
-    "minus equals": " -= ",
-    "plus plus": "++ ",
-    "minus minus": "-- ",
-}
 
 ctx.lists["self.number"] = dict(zip(default_digits, numbers))
 ctx.lists["self.arrow"] = {
@@ -193,11 +138,6 @@ def letter(m):
 @ctx.capture(rule="{self.special}")
 def special(m):
     return m.special[0]
-
-
-@ctx.capture(rule="{self.symbol}")
-def symbol(m):
-    return m.symbol[0]
 
 
 @ctx.capture(rule="(<self.arrow> | <self.number> | <self.letter> | <self.special>)")
