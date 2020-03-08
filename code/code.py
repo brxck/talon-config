@@ -6,6 +6,7 @@ ctx = Context()
 key = actions.key
 
 extension_lang_map = {
+    "js": "javascript",
     "py": "python",
     "cs": "csharp",
     "cpp": "cplusplus",
