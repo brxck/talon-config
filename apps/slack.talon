@@ -69,7 +69,7 @@ grab right:
 add line:
     key(shift-enter)
 #"(slack | lack) (slap | slaw | slapper):
-    [key(cmd-right) key(shift-enter")],
+#    [key(cmd-right) key(shift-enter")],
 (slack | lack) (react | reaction):
     key(ctrl-shift-\\)
 (insert command | commandify):
