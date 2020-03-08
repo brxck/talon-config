@@ -1,4 +1,5 @@
-<user.ordinals>: core.repeat_command(ordinals)
+<user.ordinals>:
+    core.repeat_command(ordinals)
 
 
 
