@@ -48,16 +48,6 @@ bar:
 	insert("|")
 wave:
 	insert("~")
-assign:
-	insert(" = ")
-plus:
-	insert(" + ")
-minus:
-	insert(" - ")
-divide:
-	insert(" / ")
-modulo:
-	insert(" % ")
 coy:
 	insert(": ")
 drip:
@@ -80,18 +70,21 @@ burl:
 	insert("{")
 curl:
 	insert("}")
+
+assign:
+	insert(" = ")
+plus:
+	insert(" + ")
+minus:
+	insert(" - ")
+divide:
+	insert(" / ")
+modulo:
+	insert(" % ")
 less than:
 	insert(" < ")
 less equals:
 	insert(" <= ")
-strict equals:
-	insert(" === ")
-not strict equals:
-	insert(" !== ")
-equals:
-	insert(" == ")
-not equals:
-	insert(" != ")
 greater than:
 	insert(" > ")
 greater equals:
@@ -104,3 +97,13 @@ plus plus:
 	insert("++ ")
 minus minus:
 	insert("-- ")
+equals:
+	insert(" == ")
+not equals:
+	insert(" != ")
+strict equals:
+	insert(" === ")
+not strict equals:
+	insert(" !== ")
+rocket:
+    insert(" => ")
