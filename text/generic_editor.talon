@@ -1,60 +1,58 @@
 find it:
 	edit.find()
-next one:
+find next:
 	edit.find_next()
-go word left: 
+
+lore: 
 	edit.word_left()
-go word right: 
+role: 
 	edit.word_right()
-go left: 
+lease: 
 	edit.left()
-go right: 
+ross: 
 	edit.right()
-go up: 
+sauce: 
 	edit.up()
-go down: 
+dunce: 
 	edit.down()
-go line start: 
+strike: 
 	edit.line_start()
-go line end: 
+struck: 
 	edit.line_end()
-go way left: 
-	edit.line_start()
-	edit.line_start()
-go way right: 
-	edit.line_end()
-go way down: 
+strike out: 
 	edit.file_end()
-go way up: 
+struck out: 
 	edit.file_start()
-go page down:
+punch:
 	edit.page_down()
-go page up:
+pinch:
 	edit.page_up()
+
 # selecting
-select line: 
+shackle: 
 	edit.line_start()
 	edit.extend_line_end()
-select left: 
+lorit: 
 	edit.extend_left()
-select right: 
+rolit: 
 	edit.extend_right()
-select up: 
+sock: 
 	edit.extend_line_up()
-select down: 
+dock: 
 	edit.extend_line_down()
-select word left:
+lorex:
 	edit.extend_word_left()
-select word right: 
+rolex: 
 	edit.extend_word_right()
-select way left: 
+strikex: 
 	edit.extend_line_start()
-select way right: 
+struckex: 
 	edit.extend_line_end()
-select way up: 
+strikex out: 
 	edit.extend_file_start()
-select way down: 
+struckex out: 
 	edit.extend_file_end()
+
 # deleting
 clear line: 
 	edit.delete_line()
@@ -70,21 +68,9 @@ clear up:
 clear down: 
 	edit.extend_line_down()
 	edit.delete()
-clear word left: 
+whack: 
 	edit.extend_word_left()
 	edit.delete()
-clear word right: 
+bump: 
 	edit.extend_word_right()
-	edit.delete()
-clear way left: 
-	edit.extend_line_start()
-	edit.delete()
-clear way right: 
-	edit.extend_line_end()
-	edit.delete()
-clear way up: 
-	edit.extend_file_start()
-	edit.delete()
-clear way down: 
-	edit.extend_file_end()
 	edit.delete()

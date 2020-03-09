@@ -1,6 +1,3 @@
-os: windows
-os: linux
--
 action(edit.copy): 
 	key(ctrl-c)
  
@@ -40,8 +37,6 @@ action(edit.extend_file_start):
 	
 action(edit.extend_left):
 	key(shift-left)
-	
-#action(edit.extend_line): 
 
 action(edit.extend_line_down): 
 	key(shift-down)
