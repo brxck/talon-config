@@ -23,3 +23,10 @@ send up:
 # 	key(super-%(nnavi10)d)
 # send <nnavi10>: 
 # 	key(shift-super-%(nnavi10)d)
+
+quake:
+		key(super-q)
+flip:
+		key(super-e)
+launch:
+		key(super-r)
