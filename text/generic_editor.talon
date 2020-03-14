@@ -3,6 +3,19 @@ find it:
 find next:
 	edit.find_next()
 
+save:
+	edit.save()
+spark:
+	edit.paste()
+cut:
+	edit.cut()
+copy: 
+	edit.copy()
+grab: 
+	edit.copy_mouse_word()
+drop:
+	edit.replace_mouse_word()
+
 lore: 
 	edit.word_left()
 role: 
