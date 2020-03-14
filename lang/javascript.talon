@@ -1,6 +1,17 @@
 code.language: javascript
 -
 
+const:
+  insert("const ")
+let:
+  insert("let ")
+var:
+  insert("var ")
+async:
+  insert("async ")
+await:
+  insert("await ")
+
 action(user.code_if):
   insert("if (")
   
