@@ -1,205 +1,116 @@
-### Actions ###
-action(edit.paste):
-	key(ctrl-v)
-
-action(edit.print):
-	key(ctrl-p)
-	
-action(edit.redo):
-	key(ctrl-y)
-
+###  Actions  ###
+## Clipboard ##
+action(edit.cut):
+	key(ctrl-x)
 action(edit.copy):
 	key(ctrl-c)
-
-action(edit.copy_mouse_word):
+action(edit.paste):
+	key(ctrl-v)
+action(edit.copy_cursor_word):
 	mouse_click()
 	mouse_click()
 	edit.copy()
-
-action(edit.replace_mouse_word):
+action(edit.replace_cursor_word):
 	mouse_click()
 	mouse_click()
 	edit.paste()
- 
-action(edit.cut):
-	key(ctrl-x)
-
+## Search ##
 action(edit.find):
 	key(ctrl-f)
-	actions.insert(text)
-
 action(edit.find_next):
 	key(f3)
-
-action(edit.save):
-	key(ctrl-s)
-
-action(edit.save_all):
-	key(ctrl-shift-s)
-
+## Misc ##
 action(edit.undo):
 	key(ctrl-z)
-
+action(edit.redo):
+	key(ctrl-y)
+action(edit.save):
+	key(ctrl-s)
+action(edit.save_as):
+	key(ctrl-shift-s)
+action(edit.print):
+	key(ctrl-p)
 action(edit.zoom_in):
 	key(ctrl-+)
-
 action(edit.zoom_out):
 	key(ctrl--)
-
 action(edit.zoom_reset):
 	key(ctrl-0)
 
 ### Editing ###
 action(edit.delete):
 	key(backspace)
-	
-action(edit.delete_line):
+action(edit.line_delete):
 	edit.select_line()
 	edit.delete()
-
-action(edit.delete_word):
-	actions.edit.select_word()
+action(edit.word_delete_left):
+	actions.edit.extend_word_left()
 	actions.edit.delete()
-
-action(edit.indent_less):
-	key(home delete)
-
+action(edit.word_delete_right):
+	actions.edit.extend_word_right()
+	actions.edit.delete()
 action(edit.indent_more):
 	key(home tab)
-
-action(edit.line_insert_down):
-	key(end enter)
-	
+action(edit.indent_less):
+	key(home delete)
 action(edit.line_insert_up):
 	key(home enter up)
-
+action(edit.line_insert_down):
+	key(end enter)
 
 ### Navigation ###
-action(edit.down):
-	key(down)
-
-action(edit.right):
-	key(right)
-
 action(edit.up):
 	key(up)
-
+action(edit.down):
+	key(down)
 action(edit.left):
 	key(left)
-
-action(edit.page_down):
-	key(pagedown)
-	
+action(edit.right):
+	key(right)
 action(edit.page_up):
 	key(pageup)
-
+action(edit.page_down):
+	key(pagedown)
 action(edit.file_end):
 	key(ctrl-end)
-
 action(edit.file_start):
 	key(ctrl-home)
-
 action(edit.word_left):
 	key(ctrl-left)
-
 action(edit.word_right):
 	key(ctrl-right)
-
 action(edit.line_start):
 	key(home)
-	
-action(edit.line_up):
-	key(up home)
-
-action(edit.line_down):
-	key(down home)
-	
 action(edit.line_end):
 	key(end)
 
 ### Selection ###
+action(edit.select_none):
+	key(right)
+action(edit.select_all):
+	key(ctrl-a)
+
+action(edit.extend_up):
+	key(shift-end shift-up)
 action(edit.extend_down):
-	key(shift-down)
-	
-action(edit.extend_file_end):
-	key(shift-ctrl-end)
-	
-action(edit.extend_file_start):
-	key(shift-ctrl-home)
-	
+	key(shift-home shift-down)
 action(edit.extend_left):
 	key(shift-left)
-
-action(edit.extend_line_down):
-	key(shift-down)
-
-action(edit.extend_line_end):
-	key(shift-end)
-
-action(edit.extend_line_start):
-	key(shift-home)
-
-action(edit.extend_line_up):
-	key(shift-up)
-	
-action(edit.extend_page_down):
-	key(shift-pagedown)
-
-action(edit.extend_page_up):
-	key(shift-pageup)	
-
-action(edit.extend_down):
-	key(shift-down)
-	
-action(edit.extend_file_end):
-	key(shift-ctrl-end)
-	
-action(edit.extend_file_start):
-	key(shift-ctrl-home)
-	
-action(edit.extend_left):
-	key(shift-left)
-
-action(edit.extend_line_down):
-	key(shift-down)
-
-action(edit.extend_line_end):
-	key(shift-end)
-
-action(edit.extend_line_start):
-	key(shift-home)
-
-action(edit.extend_line_up):
-	key(shift-up)
-	
-action(edit.extend_page_down):
-	key(shift-pagedown)
-
-action(edit.extend_page_up):
-	key(shift-pageup)	
-
 action(edit.extend_right):
 	key(shift-right)
 
-action(edit.extend_up):
-	key(shift-up)
-	
-action(edit.extend_word_left):
-	key(ctrl-shift-left)
+action(edit.extend_file_start):
+	key(shift-ctrl-home)
+action(edit.extend_file_end):
+	key(shift-ctrl-end)
 
-action(edit.extend_word_right):
-	key(ctrl-shift-right)
-
-action(edit.select_all):
-	key(ctrl-a)
-	
 action(edit.select_line):
 	key(end shift-home)
-
-	action(edit.select_none):
-	key(right)
-
-action(edit.select_word):
+action(edit.extend_line_start):
+	key(shift-home)
+action(edit.extend_line_end):
+	key(shift-end)
+action(edit.extend_word_left):
 	key(ctrl-shift-left)
-
-#action(edit.select_lines(a:int, b:int)):
+action(edit.extend_word_right):
+	key(ctrl-shift-right)
