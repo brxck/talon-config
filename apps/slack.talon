@@ -6,7 +6,7 @@ app: slack.exe
 -
 # Workspaces
 workspace <number>:
-    user.keys_modifier_key("ctrl", number)
+    key("ctrl-{number}")
 previous workspace:
     key(ctrl-shift-tab)
 next workspace:
