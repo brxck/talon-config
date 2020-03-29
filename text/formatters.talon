@@ -1,11 +1,11 @@
 <user.format_text> [over]:
     insert(format_text)
 
-phrase <dgndictation> [over]:
-    dictate.lower(dgndictation)
+phrase <phrase> [over]:
+    dictate.lower(phrase)
 
-say <dgndictation> [over]: 
-    dictate.lower(dgndictation)
+say <phrase> [over]: 
+    dictate.lower(phrase)
 
 
 

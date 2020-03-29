@@ -15,9 +15,9 @@ slack down:
 # Channel
 channel:
     key(ctrl-k)
-channel <dgndictation>:
+channel <phrase>:
     key(ctrl-k)
-    dictate.lower(dgndictation)
+    dictate.lower(phrase)
 unread prior:
     key(alt-shift-up)
 unread next:
