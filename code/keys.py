@@ -3,7 +3,7 @@ from typing import Set
 from talon import Module, Context, actions
 import sys
 
-default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
+default_alphabet = "air bat cap drum east fox gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
     " "
 )
 letters_string = "abcdefghijklmnopqrstuvwxyz"
@@ -91,76 +91,51 @@ ctx.lists["self.modifier"] = {
 
 ctx.lists["self.letter"] = dict(zip(default_alphabet, letters_string))
 ctx.lists["self.symbol"] = {
-    "back tick": "`",
+    "smite": "`",
     "`": "`",
-    "comma": ",",
+    "drip": ",",
     ",": ",",
     "dot": ".",
     "period": ".",
     "semi": ";",
     "semicolon": ";",
-    "quote": "'",
-    "L square": "[",
-    "left square": "[",
-    "square": "[",
-    "R square": "]",
-    "right square": "]",
-    "forward slash": "/",
+    "smote": "'",
+    "ace": "[",
+    "race": "]",
+    "slash": "/",
     "slash": "/",
     "backslash": "\\",
-    "minus": "-",
     "dash": "-",
-    "equals": "=",
-    "plus": "+",
-    "question mark": "?",
+    "equit": "=",
+    "cross": "+",
+    "quell": "?",
     "tilde": "~",
     "bang": "!",
-    "exclamation point": "!",
-    "dollar": "$",
-    "dollar sign": "$",
-    "down score": "_",
-    "under score": "_",
-    "colon": ":",
-    "paren": "(",
-    "L paren": "(",
-    "left paren": "(",
-    "R paren": ")",
-    "right paren": ")",
-    "brace": "{",
-    "left brace": "{",
-    "R brace": "}",
-    "right brace": "}",
+    "doll": "$",
+    "flat": "_",
+    "colt": ":",
+    "bend": "(",
+    "rend": ")",
+    "burl": "{",
+    "curl": "}",
     "angle": "<",
-    "left angle": "<",
-    "less than": "<",
     "rangle": ">",
-    "R angle": ">",
-    "right angle": ">",
-    "greater than": ">",
-    "star": "*",
-    "asterisk": "*",
+    "splat": "*",
     "pound": "#",
-    "hash": "#",
-    "hash sign": "#",
-    "number sign": "#",
-    "percent": "%",
-    "percent sign": "%",
+    "perk": "%",
     "caret": "^",
-    "at sign": "@",
-    "and sign": "&",
-    "ampersand": "&",
+    "insta": "@",
     "amper": "&",
     "pipe": "|",
-    "dubquote": '"',
-    "double quote": '"',
+    "quote": '"',
 }
 
 ctx.lists["self.number"] = dict(zip(default_digits, numbers))
 ctx.lists["self.arrow"] = {
-    "left": "left",
-    "right": "right",
-    "up": "up",
-    "down": "down",
+    "lease": "left",
+    "role": "right",
+    "sauce": "up",
+    "dunce": "down",
 }
 
 simple_keys = [
@@ -176,9 +151,8 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "delete": "backspace",
-    #'junk': 'backspace',
-    "forward delete": "delete",
+    "scratch": "backspace",
+    "forward delete": "chuck",
 }
 keys = {k: k for k in simple_keys}
 keys.update(alternate_keys)
