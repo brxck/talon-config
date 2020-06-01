@@ -130,12 +130,12 @@ ctx.lists["self.symbol"] = {
     "quote": '"',
 }
 
-ctx.lists["self.number"] = dict(zip(default_digits, numbers))
-ctx.lists["self.arrow"] = {
-    "lease": "left",
-    "role": "right",
-    "sauce": "up",
-    "dunce": "down",
+ctx.lists['self.number'] = dict(zip(default_digits, numbers))
+ctx.lists['self.arrow'] = {
+    'lease':  'left',
+    'ross':  'right',
+    'sauce':    'up',
+    'dunce':  'down',
 }
 
 simple_keys = [
@@ -151,8 +151,8 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    "scratch": "backspace",
-    "forward delete": "chuck",
+    'scratch': 'backspace',
+    'chuck': 'delete',
 }
 keys = {k: k for k in simple_keys}
 keys.update(alternate_keys)
