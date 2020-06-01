@@ -1,136 +1,109 @@
-find it:
-    edit.find()
+### Actions ###
+## Clipboard ##
+cut:
+	edit.cut()
+copy:
+	edit.copy()
+spark:
+	edit.paste()
+grab:
+	edit.copy_cursor_word()
+drop:
+  edit.replace_cursor_word()
+## Search ##
+find:
+	edit.find()
+find next:
+	edit.find_next()
+## Misc ##
+undo:
+	edit.undo()
+redo:
+	edit.redo()
+save:
+	edit.save()
+save as:
+	edit.save_all()
+file print:
+	edit.print()
+zoom in:
+	edit.zoom_in()
+zoom out:
+	edit.zoom_out()
+zoom reset:
+	edit.zoom_reset()
 
-next one:
-    edit.find_next()
+### Editing ###
+scratch:
+	edit.delete()
+line delete:
+	edit.line_delete()
+whack:
+  edit.word_delete_left()
+bump:
+  edit.word_delete_right()
+indent:
+	edit.indent_more()
+outdent:
+	edit.indent_less()
+slip:
+	edit.line_insert_up()
+slide:
+	edit.line_insert_down()
 
-go word left:
-    edit.word_left()
 
-go word right:
-    edit.word_right()
+### Navigation ###
+sauce:
+	edit.up()
+dunce:
+	edit.down()
+lease:
+	edit.left()
+ross:
+	edit.right()
+pinch:
+	edit.page_up()
+punch:
+	edit.page_down()
+struck out:
+	edit.file_end()
+strike in:
+	edit.file_start()
+role:
+	edit.word_left()
+lore:
+	edit.word_right()
+strike:
+	edit.line_start()
+struck:
+	edit.line_end()
 
-go left:
-    edit.left()
-
-go right:
-    edit.right()
-
-go up:
-    edit.up()
-
-go down:
-    edit.down()
-
-go line start:
-    edit.line_start()
-
-go line end:
-    edit.line_end()
-
-go way left:
-    edit.line_start()
-    edit.line_start()
-
-go way right:
-    edit.line_end()
-
-go way down:
-    edit.file_end()
-
-go way up:
-    edit.file_start()
-
-go page down:
-    edit.page_down()
-
-go page up:
-    edit.page_up()
-
-# selecting
-select line:
-    edit.line_start()
-    edit.extend_line_end()
-
+### Selection ###
+select none:
+	edit.select_none()
 select all:
-    edit.select_all()
-
-
-select left:
-    edit.extend_left()
-
-select right:
-    edit.extend_right()
-
-select up:
-    edit.extend_line_up()
-
-select down:
-    edit.extend_line_down()
-
-select word left:
-    edit.extend_word_left()
-
-select word right:
-    edit.extend_word_right()
-
-select way left:
-    edit.extend_line_start()
-
-select way right:
-    edit.extend_line_end()
-
-select way up:
-    edit.extend_file_start()
-
-select way down:
-    edit.extend_file_end()
-
-# editing
-indent [more]:
-    edit.indent_more()
-
-(indent less | out dent):
-    edit.indent_less()
-
-# deleting
-clear line:
-    edit.delete_line()
-
-clear left:
-    key(backspace)
-
-clear right:
-    key(delete)
-
-clear up:
-    edit.extend_line_up()
-    edit.delete()
-
-clear down:
-    edit.extend_line_down()
-    edit.delete()
-
-clear word left:
-    edit.extend_word_left()
-    edit.delete()
-
-clear word right:
-    edit.extend_word_right()
-    edit.delete()
-
-clear way left:
-    edit.extend_line_start()
-    edit.delete()
-
-clear way right:
-    edit.extend_line_end()
-    edit.delete()
-
-clear way up:
-    edit.extend_file_start()
-    edit.delete()
-
-clear way down:
-    edit.extend_file_end()
-    edit.delete()
+	edit.select_all()
+saucex:
+	edit.extend_up()
+duncex:
+	edit.extend_down()
+lore it:
+	edit.extend_left()
+role it:
+	edit.extend_right()
+select file start:
+	edit.extend_file_start()
+select file end:
+	edit.extend_file_end()
+shackle:
+	edit.select_line()
+strikex:
+	edit.extend_line_start()
+struckex:
+	edit.extend_line_end()
+word select:
+	edit.select_word()
+lorex:
+	edit.extend_word_left()
+rolex:
+	edit.extend_word_right()
