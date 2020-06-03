@@ -1,6 +1,5 @@
-os: windows
+os: linux
 -
-#app.preferences()
 
 action(app.tab_close):
 	key(ctrl-w)
@@ -9,17 +8,17 @@ action(app.tab_close):
 #  Move the current tab to a new window
   
 action(app.tab_next):
-	key(ctrl-tab)
+	key(ctrl-pagedown)
 	
 action(app.tab_open):
 	key(ctrl-t)
 	
 action(app.tab_previous):
-	key(ctrl-shift-tab)
+	key(ctrl-pageupkey)
 	
 action(app.tab_reopen):
 	key(ctrl-shift-t)
-	
+
 action(app.window_close):
 	key(alt-f4)
 	
