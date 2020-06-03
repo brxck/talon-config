@@ -14,13 +14,6 @@ run calibration: user.mouse_calibrate()
 	key("{modifiers}:down")
 	mouse_click(mouse_index)
 	key("{modifiers}:up")
-(dubclick | duke): 
-	mouse_click()
-	mouse_click()
-(tripclick | triplick): 
-	mouse_click()
-	mouse_click()
-	mouse_click()
 wheel down: user.mouse_scroll_down()
 wheel tiny [down]: mouse_scroll(20)
 wheel downer: user.mouse_scroll_down_continuous()

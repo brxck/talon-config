@@ -7,9 +7,13 @@ copy:
 spark:
 	edit.paste()
 grab:
-	edit.copy_cursor_word()
+	mouse_click()
+	mouse_click()
+	edit.copy()
 drop:
-  edit.replace_cursor_word()
+  mouse_click()
+	mouse_click()
+	edit.paste()
 ## Search ##
 find:
 	edit.find()
@@ -20,7 +24,7 @@ undo:
 	edit.undo()
 redo:
 	edit.redo()
-save:
+file save:
 	edit.save()
 save as:
 	edit.save_all()
@@ -33,24 +37,28 @@ zoom out:
 zoom reset:
 	edit.zoom_reset()
 
-### Editing ###
+### Edit ###
 scratch:
 	edit.delete()
 line delete:
-	edit.line_delete()
+	edit.select_line()
+	edit.delete()
 whack:
-  edit.word_delete_left()
+	edit.extend_word_left()
+  edit.delete()
 bump:
-  edit.word_delete_right()
+  edit.extend_word_right()
+  edit.delete()
 indent:
 	edit.indent_more()
 outdent:
 	edit.indent_less()
+slap:
+	key(enter)
 slip:
 	edit.line_insert_up()
 slide:
 	edit.line_insert_down()
-
 
 ### Navigation ###
 sauce:
@@ -70,40 +78,40 @@ struck out:
 strike in:
 	edit.file_start()
 role:
-	edit.word_left()
-lore:
 	edit.word_right()
+lord:
+	edit.word_left()
 strike:
 	edit.line_start()
 struck:
 	edit.line_end()
 
 ### Selection ###
-select none:
+take none:
 	edit.select_none()
-select all:
+take all:
 	edit.select_all()
-saucex:
+take up:
 	edit.extend_up()
-duncex:
+take down:
 	edit.extend_down()
-lore it:
+take ross:
 	edit.extend_left()
-role it:
+take lease:
 	edit.extend_right()
-select file start:
+take start:
 	edit.extend_file_start()
-select file end:
+take end:
 	edit.extend_file_end()
 shackle:
 	edit.select_line()
-strikex:
+take strike:
 	edit.extend_line_start()
-struckex:
+take struck:
 	edit.extend_line_end()
-word select:
+take word:
 	edit.select_word()
-lorex:
+take lord:
 	edit.extend_word_left()
-rolex:
+take role:
 	edit.extend_word_right()

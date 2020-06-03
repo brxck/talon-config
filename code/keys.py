@@ -153,6 +153,7 @@ simple_keys = [
 alternate_keys = {
     'scratch': 'backspace',
     'chuck': 'delete',
+    'void': 'space',
 }
 keys = {k: k for k in simple_keys}
 keys.update(alternate_keys)
