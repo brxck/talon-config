@@ -139,7 +139,6 @@ formatters_dict = {
 # This is the mapping from spoken phrases to formatters
 formatters_words = {
     "say": formatters_dict["NOOP"],
-    "speak": formatters_dict["NOOP"],
     "dunder": formatters_dict["DOUBLE_UNDERSCORE"],
     "camel": formatters_dict["PRIVATE_CAMEL_CASE"],
     "hammer": formatters_dict["PUBLIC_CAMEL_CASE"],
