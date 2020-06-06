@@ -27,24 +27,3 @@ rerun search:
   key(ctrl-r)
 kill all:
   key(ctrl-c)
-
-# XXX - these are specific to certain terminals only and should move into their
-# own <term name>.talon file
-action(edit.find):
-  key(ctrl-shift-f)
-action(edit.word_left):
-  key(ctrl-w-left)
-action(edit.word_right):
-  key(ctrl-w-right)
-action(app.tab_open):
-  key(ctrl-shift-t)
-action(app.tab_close):
-  key(ctrl-shift-w)
-action(app.tab_next):
-  key(ctrl-pagedown)
-action(app.tab_previous):
-  key(ctrl-pageup)
-action(app.window_open):
-  key(ctrl-shift-n)
-go tab <number>:
-  key("alt-{number}")

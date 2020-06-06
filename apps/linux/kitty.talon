@@ -32,7 +32,7 @@ next tab:
 previous tab:
   key(ctrl-shift-left)
   
-next layout:
+layout next:
   key(ctrl-shift-l)
   
 move tab forward:
