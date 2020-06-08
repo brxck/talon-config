@@ -1,5 +1,5 @@
 <user.arrows>: key(arrows)
-num <user.number>: key(number)
+num key <user.number>: key(number)
 <user.letter>: key(letter)
 big <user.letters> [small]: 
     user.keys_uppercase_letters(letters)

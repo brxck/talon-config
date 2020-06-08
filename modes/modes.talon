@@ -18,13 +18,16 @@ talon wake: speech.enable()
 dragon mode: speech.disable()
 talon mode: speech.enable()
 ^dictation mode$:
-    mode.disable("sleep")
-    mode.disable("command")
-    mode.enable("dictation")
+  mode.disable("sleep")
+  mode.disable("command")
+	mode.enable("dictation")
+	app.notify("Dictation Mode")
 ^command mode$:
     mode.disable("sleep")
     mode.disable("dictation")
     mode.enable("command")
+    app.notify("Command Mode")
+
 [enable] debug mode:
     mode.enable("user.gdb")
 disable debug mode:

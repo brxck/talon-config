@@ -1,6 +1,9 @@
 #provide both anchored and unachored commands via 'over'
 <user.format_text>$: insert(format_text)
 <user.format_text> over: insert(format_text)
+<user.format_text> slap:
+  insert(format_text)
+  key(enter)
 phrase <user.text>$: insert(user.text)
 phrase <user.text> over: insert(user.text)
 word <user.word>: insert(user.word)
@@ -10,3 +13,4 @@ hide formatters: user.hide_formatters()
 ^nope that was <user.formatters>$:
   user.clear_last_phrase()
   insert(user.reformat_last_phrase(user.formatters))
+num <user.number>: insert(user.number)

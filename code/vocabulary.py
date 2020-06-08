@@ -4,12 +4,21 @@ from talon import Context, Module, actions, grammar
 simple_vocabulary = [
     "nmap",
     "admin",
-    "Cisco",
-    "Citrix",
+    "cisco",
+    "citrix",
     "VPN",
     "DNS",
     "minecraft",
-    "regex"
+    "regex",
+    "VPC",
+    "fso",
+    "docker",
+    "lambda",
+    "api",
+    "zappa",
+    "postgres",
+    "localhost",
+    "api"
 ]
 
 mapping_vocabulary = {
@@ -19,6 +28,10 @@ mapping_vocabulary = {
     "i'll": "I'll",
     "i'd": "I'd",
     "jay son": "json",
+    "jason": "json",
+    "jango": "django",
+    "ap": "app",
+    "otto": "auto"
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))

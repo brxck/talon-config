@@ -41,8 +41,7 @@ zoom reset:
 scratch:
 	edit.delete()
 line delete:
-	edit.select_line()
-	edit.delete()
+	edit.delete_line()
 whack:
 	edit.extend_word_left()
   edit.delete()
@@ -75,7 +74,7 @@ punch:
 	edit.page_down()
 struck out:
 	edit.file_end()
-strike in:
+strike out:
 	edit.file_start()
 role:
 	edit.word_right()
