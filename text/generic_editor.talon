@@ -1,28 +1,28 @@
 ### Actions ###
 ## Clipboard ##
-cut:
+cut that:
 	edit.cut()
-copy:
+copy that:
 	edit.copy()
-spark:
+(paste that|spark):
 	edit.paste()
-grab:
+grab that:
 	mouse_click()
 	mouse_click()
 	edit.copy()
-drop:
+drop that:
   mouse_click()
 	mouse_click()
 	edit.paste()
 ## Search ##
-find:
+find that:
 	edit.find()
 find next:
 	edit.find_next()
 ## Misc ##
-undo:
+undo that:
 	edit.undo()
-redo:
+redo that:
 	edit.redo()
 file save:
 	edit.save()

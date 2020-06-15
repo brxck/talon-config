@@ -108,7 +108,7 @@ ctx.lists['self.symbol'] = {
     'bang': '!',
     'doll': '$',
     'flat': '_',
-    'colt': ':',
+    'cowl': ':',
     'bend': '(',
     'rend': ')',
     'burl': '{',

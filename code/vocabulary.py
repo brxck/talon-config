@@ -6,8 +6,8 @@ simple_vocabulary = [
     "admin",
     "cisco",
     "citrix",
-    "VPN",
-    "DNS",
+    "vpn",
+    "dns",
     "minecraft",
     "regex",
     "VPC",
@@ -18,7 +18,9 @@ simple_vocabulary = [
     "zappa",
     "postgres",
     "localhost",
-    "api"
+    "api",
+    "config",
+    "aws"
 ]
 
 mapping_vocabulary = {
@@ -31,7 +33,9 @@ mapping_vocabulary = {
     "jason": "json",
     "jango": "django",
     "ap": "app",
-    "otto": "auto"
+    "otto": "auto",
+    "employe": "employee",
+    "bullion": "boolean"
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
