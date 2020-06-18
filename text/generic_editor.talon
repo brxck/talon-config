@@ -43,11 +43,9 @@ scratch:
 line delete:
 	edit.delete_line()
 whack:
-	edit.extend_word_left()
-  edit.delete()
+	key(ctrl-backspace)
 bump:
-  edit.extend_word_right()
-  edit.delete()
+  key(ctrl-delete)
 indent:
 	edit.indent_more()
 outdent:
