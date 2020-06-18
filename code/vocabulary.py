@@ -20,7 +20,12 @@ simple_vocabulary = [
     "localhost",
     "api",
     "config",
-    "aws"
+    "aws",
+    "github",
+    "gitlab",
+    "netlify",
+    "backend",
+    "gatsby"
 ]
 
 mapping_vocabulary = {
@@ -35,7 +40,10 @@ mapping_vocabulary = {
     "ap": "app",
     "otto": "auto",
     "employe": "employee",
-    "bullion": "boolean"
+    "bullion": "boolean",
+    "roll": "role",
+    "rolls": "roles",
+    "aloud": "allowed"
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
