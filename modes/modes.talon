@@ -1,11 +1,7 @@
 #defines the various mode commands
 mode: all
 -
-welcome back:
-    user.mouse_wake()
-    user.history_enable()
-    speech.enable()
-sleep all:
+^sleep mode$:
     user.switcher_hide_running()
     user.history_disable()
     user.homophones_hide()
@@ -13,24 +9,23 @@ sleep all:
     user.mouse_sleep()
     speech.disable()
     user.engine_sleep()
-talon sleep: speech.disable()
-talon wake: speech.enable()
-dragon mode: speech.disable()
-talon mode: speech.enable()
+    app.notify("Sleeping...")
+
 ^dictation mode$:
-  mode.disable("sleep")
-  mode.disable("command")
+    mode.disable("sleep")
+    mode.disable("command")
 	mode.enable("dictation")
-	app.notify("Dictation Mode")
+    app.notify("Dictation Mode")
+
 ^command mode$:
     mode.disable("sleep")
     mode.disable("dictation")
     mode.enable("command")
     app.notify("Command Mode")
 
-[enable] debug mode:
+^[enable] debug mode$:
     mode.enable("user.gdb")
-disable debug mode:
+^disable debug mode$:
     mode.disable("user.gdb")
 ^force see sharp$: user.code_set_language_mode("csharp")
 ^force see plus plus$: user.code_set_language_mode("cplusplus")
