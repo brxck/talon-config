@@ -25,7 +25,8 @@ simple_vocabulary = [
     "gitlab",
     "netlify",
     "backend",
-    "gatsby"
+    "gatsby",
+    "shibboleth"
 ]
 
 mapping_vocabulary = {
@@ -43,7 +44,8 @@ mapping_vocabulary = {
     "bullion": "boolean",
     "roll": "role",
     "rolls": "roles",
-    "aloud": "allowed"
+    "aloud": "allowed",
+    "use her name": "username"
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))

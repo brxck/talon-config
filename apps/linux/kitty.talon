@@ -9,40 +9,40 @@ scroll line up:
 scroll line down:
   key(ctrl-shift-down)
 
-scroll page up:
+pinch:
   key(ctrl-shift-pageup)
 
-scroll page down:
+punch:
   key(ctrl-shift-pagedown)
 
-scroll to top:
+strike out:
   key(ctrl-shift-home)
 
-scroll to bottom:
+struck out:
   key(ctrl-shift-end)
 
-tab new:
+action(app.tab_open):
   key(ctrl-shift-t)
   
-tab close:
+action(app.tab_close):
   key(ctrl-shift-q)
   
-next tab:
+action(app.tab_next):
   key(ctrl-shift-right)
   
-previous tab:
+action(app.tab_previous):
   key(ctrl-shift-left)
   
-layout next:
+layout switch:
   key(ctrl-shift-l)
   
-move tab forward:
+tab forward:
   key(ctrl-shift-.)
   
-move tab backward:
+tab backward:
   key(ctrl-shift-,)
   
-set tab title:
+tab title:
   key(ctrl-shift-alt-t)
   
 pane new:

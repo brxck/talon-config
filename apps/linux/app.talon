@@ -14,7 +14,7 @@ action(app.tab_open):
 	key(ctrl-t)
 	
 action(app.tab_previous):
-	key(ctrl-pageupkey)
+	key(ctrl-pageup)
 	
 action(app.tab_reopen):
 	key(ctrl-shift-t)
