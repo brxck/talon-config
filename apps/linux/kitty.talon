@@ -2,6 +2,7 @@ app: kitty
 os: linux
 -
 tag(): terminal
+tag(): tabs
 
 scroll line up:
   key(ctrl-shift-up)
