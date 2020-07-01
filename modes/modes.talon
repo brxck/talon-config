@@ -22,11 +22,6 @@ mode: all
     mode.disable("dictation")
     mode.enable("command")
     app.notify("Command Mode")
-
-^zoom mode$:
-    user.switcher_focus("zoom")
-    key(alt-a)
-    mode.enable("zoom")
       
 ^[enable] debug mode$:
     mode.enable("user.gdb")
