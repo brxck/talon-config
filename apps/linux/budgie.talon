@@ -6,11 +6,12 @@ window left:
   key(super-left)
 window right: 
   key(super-right)
+
 monitor left: 
   key(shift-super-left)
 monitor right: 
   key(shift-super-right)
-# Workspace management
+
 work down: 
   key(super-pgdown)
 work up: 
@@ -24,9 +25,13 @@ send up:
 # send <nnavi10>: 
 # 	key(shift-super-%(nnavi10)d)
 
-quake:
-  key(super-q)
-flip:
-  key(super-e)
-launch:
-  key(super-r)
+quake (down|it):
+  user.system_command("tdrop-kitty down")
+quake up:
+  user.system_command("tdrop-kitty up")
+quake left:
+  user.system_command("tdrop-kitty left")
+quake right:
+  user.system_command("tdrop-kitty right")
+quake full:
+  user.system_command("tdrop-kitty full")
