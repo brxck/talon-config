@@ -1,16 +1,7 @@
-os: linux
-app: Code
-app: Code - OSS
-
-os: mac
-app: Code
-
-os: windows
-app: Visual Studio Code
-app: Code.exe
+title: /.* - Visual Studio Code$/
 -
 
-# action(edit.copy): 
+# action(edit.copy):
 # 	key(ctrl-c)
  
 # action(edit.cut): 
@@ -20,14 +11,14 @@ app: Code.exe
 # 	key(backspace)
 
 action(edit.delete_line): 
-	key(ctrl-shift-k)
+	user.vscode("editor.action.deleteLines")
 	
 #action(edit.delete_paragraph): 
 
 #action(edit.delete_sentence): 
 
 action(edit.delete_word):
-	key(ctrl-d)
+	actions.edit.select_word()
 	actions.edit.delete()
 
 #action(edit.extend_again): 
@@ -54,8 +45,8 @@ action(edit.delete_word):
 #action(edit.extend_paragraph_previous()):
 #action(edit.extend_paragraph_start()):
 
-action(edit.extend_right):
-	key(shift-right)
+# action(edit.extend_right):
+# 	key(shift-right)
 	
 #action(edit.extend_sentence_end):
 #action(edit.extend_sentence_next):
@@ -69,7 +60,7 @@ action(edit.extend_right):
 # 	key(ctrl-shift-left)
 
 # action(edit.extend_word_right):
-# 	key(ctrl-shift-right)
+# 	user.vscode("editor.action.smartSelect.expand")
 
 # action(edit.file_end):
 # 	key(ctrl-end)
@@ -86,16 +77,13 @@ action(edit.extend_right):
 #action(edit.find_previous):
 
 action(edit.indent_less):
-	key(ctrl-[)
+	user.vscode("editor.action.outdentLines")
 
 action(edit.indent_more):
-	key(ctrl-])
-
-action(edit.jump_column):
-	key(ctrl-g)
+	user.vscode("editor.action.indentLines")
 
 action(edit.jump_line):
-	key(ctrl-g)
+	user.vscode("workbench.action.gotoLine")
 
 # action(edit.line_down):
 # 	key(down home)
@@ -104,10 +92,16 @@ action(edit.jump_line):
 # 	key(end)
 
 action(edit.line_insert_down):
-	key(end enter)
+	user.vscode("editor.action.insertLineAfter")
 	
 action(edit.line_insert_up):
-	key(home enter up)
+	user.vscode("editor.action.insertLineBefore")
+
+action(edit.line_swap_up):
+	user.vscode("editor.action.moveLinesUpAction")
+
+action(edit.line_swap_down):
+	user.vscode("editor.action.moveLinesDownAction")
 
 # action(edit.line_start):
 # 	key(home)
@@ -123,17 +117,17 @@ action(edit.line_insert_up):
 # action(edit.page_up):
 # 	key(pageup)
 
-action(edit.paragraph_end):
-	key(alt-end)
+# action(edit.paragraph_end):
+# 	key(alt-end)
 
-action(edit.paragraph_next):
-	key(alt-end)
+# action(edit.paragraph_next):
+# 	key(alt-end)
 
-action(edit.paragraph_previous):
-	key(alt-home)
+# action(edit.paragraph_previous):
+# 	key(alt-home)
 
-action(edit.paragraph_start):
-	key(alt-home)
+# action(edit.paragraph_start):
+# 	key(alt-home)
 
 # action(edit.paste):
 # 	key(ctrl-v)
@@ -143,8 +137,8 @@ action(edit.paragraph_start):
 # action(edit.print):
 # 	key(ctrl-p)
 	
-action(edit.redo):
-	key(ctrl-y)
+# action(edit.redo):
+# 	key(ctrl-y)
 	
 # action(edit.right):
 # 	key(right)
@@ -159,19 +153,19 @@ action(edit.redo):
 # 	key(ctrl-a)
 	
 action(edit.select_line):
-	key(ctrl-l)
+	user.vscode("expandLineSelection")
 
-action(edit.select_lines):
-	key(shift-alt-/)
+# action(edit.select_lines):
+# 	key(shift-alt-/)
 	
 action(edit.select_none):
-	key(ctrl-shift-enter)
+	user.vscode("cancelSelection")
 	
 #action(edit.select_paragraph):
 #action(edit.select_sentence):
 
 action(edit.select_word):
-	key(ctrl-d)
+	user.vscode("editor.action.addSelectionToNextFindMatch")
 
 #action(edit.selected_text): -> str
 #action(edit.sentence_end):
@@ -185,11 +179,11 @@ action(edit.select_word):
 # action(edit.up):
 # 	key(up)
 
-action(edit.word_left):
-	key(ctrl-left)
+# action(edit.word_left):
+# 	key(ctrl-left)
 
-action(edit.word_right):
-	key(ctrl-right)
+# action(edit.word_right):
+# 	key(ctrl-right)
 
 # action(edit.zoom_in):
 # 	key(ctrl-+)
