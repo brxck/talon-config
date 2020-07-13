@@ -13,4 +13,4 @@ hide formatters: user.hide_formatters()
 ^nope that was <user.formatters>$:
   user.clear_last_phrase()
   insert(user.reformat_last_phrase(user.formatters))
-num <user.number>: insert(user.number)
+num <user.number_scaled>: insert(user.number_scaled)
