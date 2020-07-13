@@ -26,11 +26,6 @@ action(browser.focus_address):
 action(browser.focus_search):
 	browser.focus_address()
 
-action(browser.go):
-	browser.focus_address()
-	insert(url)
-	key(enter)
-
 action(browser.go_blank):
 	key(ctrl-n)
 
@@ -73,3 +68,27 @@ action(browser.submit_form):
 
 action(browser.toggle_dev_tools):
 	key(ctrl-shift-i)
+
+dev console:
+	key(ctrl-shift-k)
+
+dev picker:
+	key(ctrl-shift-k)
+
+dev style:
+	key(shift-f7)
+
+dev profile:
+	key(shift-f5)
+
+dev responsive:
+	key(ctrl-shift-m)
+
+dev network:
+	key(ctrl-shift-e)
+
+dev storage:
+	key(shift-f9)
+
+dev debug:
+	key(ctrl-shift-z)
