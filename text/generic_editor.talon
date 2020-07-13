@@ -4,7 +4,7 @@ cut that:
 	edit.cut()
 copy that:
 	edit.copy()
-(paste that|spark):
+(paste that|spark [that]):
 	edit.paste()
 grab that:
 	mouse_click()
@@ -20,13 +20,13 @@ find that:
 find next:
 	edit.find_next()
 ## Misc ##
-undo that:
+rewind:
 	edit.undo()
-redo that:
+replay:
 	edit.redo()
-file save:
+file disk:
 	edit.save()
-save as:
+file disk as:
 	edit.save_all()
 file print:
 	edit.print()
@@ -46,16 +46,20 @@ whack:
 	key(ctrl-backspace)
 bump:
   key(ctrl-delete)
-indent:
+move in:
 	edit.indent_more()
-outdent:
+move out:
 	edit.indent_less()
 slap:
 	key(enter)
-slip:
+line up:
 	edit.line_insert_up()
-slide:
+line down:
 	edit.line_insert_down()
+swap up:
+	edit.line_swap_up()
+swap down:
+	edit.line_swap_down()
 
 ### Navigation ###
 sauce:
@@ -93,14 +97,14 @@ take up:
 take down:
 	edit.extend_down()
 take ross:
-	edit.extend_left()
-take lease:
 	edit.extend_right()
+take lease:
+	edit.extend_left()
 take start:
 	edit.extend_file_start()
 take end:
 	edit.extend_file_end()
-shackle:
+take line:
 	edit.select_line()
 take strike:
 	edit.extend_line_start()

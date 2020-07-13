@@ -1,4 +1,4 @@
-os: windows
+os: linux
 -
 action(edit.copy):
 	key(ctrl-c)
@@ -187,7 +187,7 @@ action(edit.select_none):
 #action(edit.select_sentence):
 
 action(edit.select_word):
-	key(ctrl-left ctrl-shift-right)
+	key(ctrl-shift-left)
 
 #action(edit.selected_text): -> str
 #action(edit.sentence_end):
