@@ -358,9 +358,12 @@ class Actions:
 
     def code_type_definition():
         """code_type_definition (typedef)"""
-
+    
     def code_typedef_struct():
         """code_typedef_struct (typedef)"""
+
+    def code_type_dictionary():
+        """code_type_dictionary"""
 
     def code_type_class():
         """code_type_class"""
