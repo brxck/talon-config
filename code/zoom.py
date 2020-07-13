@@ -1,19 +1,15 @@
-from talon import Context, actions, Module, noise
+from talon import actions, Module, noise
 
 mod = Module()
-ctx = Context()
-ctx.commands = {
-    "^zoom switch$": lambda m: actions.user.toggle_zoom("on")
-}
 
 
 def on_pop(active):
-    actions.user.toggle_zoom("off")
+    actions.user.zoom_toggle("off")
 
 
 @mod.action_class
 class Actions:
-    def toggle_zoom(mode: str):
+    def zoom_toggle(mode: str):
         """Focus Zoom and toggle mute."""
         actions.user.switcher_focus("zoom")
         actions.key("alt-a")

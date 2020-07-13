@@ -1,2 +1,1 @@
-app: zoom
--
+^zoom switch$: user.zoom_toggle('on')
