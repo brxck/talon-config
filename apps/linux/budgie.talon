@@ -26,12 +26,12 @@ send up:
 # 	key(shift-super-%(nnavi10)d)
 
 quake (down|it):
-  user.system_command("tdrop-kitty down")
+  user.system_command("tdrop2 kitty down")
 quake up:
-  user.system_command("tdrop-kitty up")
+  user.system_command("tdrop2 kitty up")
 quake left:
-  user.system_command("tdrop-kitty left")
+  user.system_command("tdrop2 kitty left")
 quake right:
-  user.system_command("tdrop-kitty right")
+  user.system_command("tdrop2 kitty right")
 quake full:
-  user.system_command("tdrop-kitty full")
+  user.system_command("tdrop2 kitty full")
