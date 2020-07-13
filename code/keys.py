@@ -2,11 +2,10 @@ from typing import Set
 
 from talon import Module, Context, actions
 import sys
+    
+default_alphabet = 'air bat cap drum east fox gust harp sit jury crunch look made near out pit quench red soy trap skew vest whale plex yank zip'.split(' ')
+letters_string = 'abcdefghijklmnopqrstuvwxyz'
 
-default_alphabet = "air bat cap drum east fox gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
-    " "
-)
-letters_string = "abcdefghijklmnopqrstuvwxyz"
 
 default_digits = "zero one two three four five six seven eight nine".split(" ")
 numbers = [str(i) for i in range(10)]
@@ -107,8 +106,8 @@ ctx.lists['self.symbol'] = {
     'tilde': '~',
     'bang': '!',
     'doll': '$',
-    'flat': '_',
-    'cowl': ':',
+    'score': '_',
+    'cot': ':',
     'bend': '(',
     'rend': ')',
     'burl': '{',
@@ -117,7 +116,7 @@ ctx.lists['self.symbol'] = {
     'rangle': '>',
     'splat': '*',
     'pound': '#',
-    'perk': '%',
+    'perco': '%',
     'caret': '^',
     'insta': '@',
     'amper': '&',

@@ -27,7 +27,11 @@ simple_vocabulary = [
     "backend",
     "gatsby",
     "shibboleth",
-    "username"
+    "username",
+    "css",
+    "gatsby",
+    "apps",
+    "doggo"
 ]
 
 mapping_vocabulary = {
@@ -45,7 +49,13 @@ mapping_vocabulary = {
     "bullion": "boolean",
     "roll": "role",
     "rolls": "roles",
-    "aloud": "allowed"
+    "aloud": "allowed",
+    "head her": "header",
+    "patting": "padding",
+    "servilis": "serverless",
+    "cash": "cache",
+    "V S code": "vscode",
+    "curse her": "cursor",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
