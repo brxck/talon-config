@@ -5,9 +5,7 @@ from typing import List, Union
 ctx = Context()
 key = actions.key
 
-words_to_keep_lowercase = "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(
-    ","
-)
+words_to_keep_lowercase = "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(",")
 
 last_formatted_phrase = ""
 last_phrase = ""
@@ -123,7 +121,7 @@ formatters_dict = {
     "SINGLE_QUOTED_STRING": (SEP, surround("'")),
     "SPACE_SURROUNDED_STRING": (SEP, surround(" ")),
     "DOT_SEPARATED": words_with_joiner("."),
-    "SLASH_SEPARATED": (NOSEP, every_word(lambda w: "/" + w)),
+    "SLASH_SEPARATED": words_with_joiner("/"),
     "CAPITALIZE_FIRST_WORD": (SEP, first_vs_rest(lambda w: w.capitalize())),
     "CAPITALIZE_ALL_WORDS": (
         SEP,
@@ -151,10 +149,10 @@ formatters_words = {
     "dubstring": formatters_dict["DOUBLE_QUOTED_STRING"],
     "string": formatters_dict["SINGLE_QUOTED_STRING"],
     "padded": formatters_dict["SPACE_SURROUNDED_STRING"],
-    "people": formatters_dict["DOT_SEPARATED"],
-    "ascend": formatters_dict["SLASH_SEPARATED"],
+    "pebble": formatters_dict["DOT_SEPARATED"],
+    "incline": formatters_dict["SLASH_SEPARATED"],
     "speak": formatters_dict["CAPITALIZE_FIRST_WORD"],
-    "tie": formatters_dict["CAPITALIZE_ALL_WORDS"],
+    "title": formatters_dict["CAPITALIZE_ALL_WORDS"],
     #disable a few formatters for now
     #"tree": formatters_dict["FIRST_THREE"],
     #"quad": formatters_dict["FIRST_FOUR"],
