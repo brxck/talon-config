@@ -234,4 +234,3 @@ def homophones_formatted_selection(m):
 
 ctx.lists["self.homophones_canonicals"] = canonical_list
 ctx.lists["self.homophones_selections"] = []
-

@@ -5,7 +5,9 @@ from typing import List, Union
 ctx = Context()
 key = actions.key
 
-words_to_keep_lowercase = "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(",")
+words_to_keep_lowercase = "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(
+    ","
+)
 
 last_formatted_phrase = ""
 last_phrase = ""
@@ -153,10 +155,10 @@ formatters_words = {
     "incline": formatters_dict["SLASH_SEPARATED"],
     "speak": formatters_dict["CAPITALIZE_FIRST_WORD"],
     "title": formatters_dict["CAPITALIZE_ALL_WORDS"],
-    #disable a few formatters for now
-    #"tree": formatters_dict["FIRST_THREE"],
-    #"quad": formatters_dict["FIRST_FOUR"],
-    #"fiver": formatters_dict["FIRST_FIVE"],
+    # disable a few formatters for now
+    # "tree": formatters_dict["FIRST_THREE"],
+    # "quad": formatters_dict["FIRST_FOUR"],
+    # "fiver": formatters_dict["FIRST_FIVE"],
 }
 
 

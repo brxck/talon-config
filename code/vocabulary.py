@@ -33,7 +33,7 @@ simple_vocabulary = [
     "apps",
     "doggo",
     "aravaipa",
-    "cognito"
+    "cognito",
 ]
 
 mapping_vocabulary = {
@@ -57,7 +57,7 @@ mapping_vocabulary = {
     "servilis": "serverless",
     "cash": "cache",
     "V S code": "vscode",
-    "curse her": "cursor"
+    "curse her": "cursor",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))

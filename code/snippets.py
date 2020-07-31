@@ -24,4 +24,3 @@ class Actions:
 @ctx.capture(rule="{user.snippets}")
 def snippets(m):
     return m.snippets
-

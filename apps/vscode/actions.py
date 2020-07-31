@@ -3,14 +3,15 @@ from talon import Context, Module, actions, clip
 ctx = Context()
 mod = Module()
 
-ctx.matches = r'''
+ctx.matches = r"""
 title: /.* - Visual Studio Code$/
-'''
+"""
 
 
-@ctx.action_class('win')
+@ctx.action_class("win")
 class win_actions:
     """Allow `code.py` to determine what the current file is."""
+
     def filename():
         title = actions.win.title()
         file = title.split(" - ")[0]

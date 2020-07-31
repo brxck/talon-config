@@ -212,4 +212,3 @@ def navigation_verbs(m):
 
 ctx.lists["user.selection_verbs"] = select_verbs_map.keys()
 ctx.lists["user.navigation_verbs"] = movement_verbs_map.keys()
-

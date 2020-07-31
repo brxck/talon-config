@@ -39,4 +39,3 @@ class Actions:
 
     def replace_confirm_all():
         """Confirm replace all"""
-

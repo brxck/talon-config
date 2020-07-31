@@ -26,4 +26,3 @@ class user_actions:
         actions.clip.set_text(text + "({})".format(selection))
         actions.edit.paste()
         actions.edit.left()
-

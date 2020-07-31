@@ -358,7 +358,7 @@ class Actions:
 
     def code_type_definition():
         """code_type_definition (typedef)"""
-    
+
     def code_typedef_struct():
         """code_typedef_struct (typedef)"""
 

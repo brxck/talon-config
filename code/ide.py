@@ -443,4 +443,3 @@ class Actions:
 
     def ide_toggle_comment():
         """Toggle comment for selected text"""
-

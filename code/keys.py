@@ -2,9 +2,6 @@ from typing import Set
 
 from talon import Module, Context, actions
 import sys
-    
-default_alphabet = 'air bat cap drum each fox gust harp sit jury crunch look made near out pit quench red sun trap urge vest whale plex yank zip'.split(' ')
-letters_string = 'abcdefghijklmnopqrstuvwxyz'
 
 
 default_digits = "zero one two three four five six seven eight nine".split(" ")
@@ -88,48 +85,53 @@ ctx.lists["self.modifier"] = {
     "super": "super",
 }
 
-ctx.lists['self.letter'] = dict(zip(default_alphabet, letters_string))
-ctx.lists['self.symbol'] = {
-    'tyke': '`', '`': '`',
-    'drip': ',', ',': ',',
-    'dot': '.', 'period': '.',
-    'semi': ';', 'semicolon': ';',
-    'smote': "'",
-    'square': '[',
-    'squad': ']',
-    'slash': '/', 'slash': '/',
-    'backslash': '\\',
-    'dash': '-',
-    'equit': '=',
-    'rat': '+',
-    'quest': '?',
-    'tilde': '~',
-    'bang': '!',
-    'doll': '$',
-    'flat': '_',
-    'cot': ':',
-    'bend': '(',
-    'rend': ')',
-    'burl': '{',
-    'curl': '}',
-    'angle': '<',
-    'rangle': '>',
-    'splat': '*',
-    'pound': '#',
-    'perco': '%',
-    'caret': '^',
-    'insta': '@',
-    'amper': '&',
-    'pipe': '|',
-    'quote': '"',
+ctx.lists["self.letter"] = dict(zip(default_alphabet, letters_string))
+ctx.lists["self.symbol"] = {
+    "tyke": "`",
+    "`": "`",
+    "drip": ",",
+    ",": ",",
+    "dot": ".",
+    "period": ".",
+    "semi": ";",
+    "semicolon": ";",
+    "smote": "'",
+    "square": "[",
+    "squad": "]",
+    "slash": "/",
+    "slash": "/",
+    "backslash": "\\",
+    "dash": "-",
+    "equit": "=",
+    "rat": "+",
+    "quest": "?",
+    "tilde": "~",
+    "bang": "!",
+    "doll": "$",
+    "flat": "_",
+    "cot": ":",
+    "bend": "(",
+    "rend": ")",
+    "burl": "{",
+    "curl": "}",
+    "angle": "<",
+    "rangle": ">",
+    "splat": "*",
+    "pound": "#",
+    "perco": "%",
+    "caret": "^",
+    "insta": "@",
+    "amper": "&",
+    "pipe": "|",
+    "quote": '"',
 }
 
-ctx.lists['self.number'] = dict(zip(default_digits, numbers))
-ctx.lists['self.arrow'] = {
-    'lease':  'left',
-    'ross':  'right',
-    'sauce':    'up',
-    'dunce':  'down',
+ctx.lists["self.number"] = dict(zip(default_digits, numbers))
+ctx.lists["self.arrow"] = {
+    "lease": "left",
+    "ross": "right",
+    "sauce": "up",
+    "dunce": "down",
 }
 
 simple_keys = [
@@ -145,9 +147,9 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    'scratch': 'backspace',
-    'chuck': 'delete',
-    'void': 'space',
+    "scratch": "backspace",
+    "chuck": "delete",
+    "void": "space",
 }
 keys = {k: k for k in simple_keys}
 keys.update(alternate_keys)
@@ -224,4 +226,3 @@ class Actions:
     def get_alphabet():
         """Provides the alphabet dictionary"""
         return ctx.lists["user.letter"]
-

@@ -3,18 +3,8 @@ from talon import Module, ui, actions
 mod = Module()
 
 
-sentence_ends = {
-    "period": ".",
-    "question": "?",
-    "exclamation": "!",
-    "enter": "\n"
-}
-punctuation = {
-    "comma": ",",
-    "semicolon": ";",
-    "dash": "-",
-    "colon": ":"
-}
+sentence_ends = {"period": ".", "question": "?", "exclamation": "!", "enter": "\n"}
+punctuation = {"comma": ",", "semicolon": ";", "dash": "-", "colon": ":"}
 
 
 class AutoFormat:
@@ -55,7 +45,7 @@ auto_format = AutoFormat()
 
 
 @mod.action_class
-class Actions():
+class Actions:
     def insert_formatted(text: str):
         """Insert auto formatted text"""
         auto_format.phrase(text)

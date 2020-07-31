@@ -192,4 +192,3 @@ class Actions:
     def kubectl_version() -> str:
         """Print the client and server version information"""
         return f"{kubectl} version "
-

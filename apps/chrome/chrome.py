@@ -21,4 +21,3 @@ class user_actions:
             actions.key("cmd-9")
         else:
             actions.key("ctrl-9")
-
