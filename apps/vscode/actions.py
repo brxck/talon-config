@@ -32,5 +32,5 @@ class Actions:
         actions.key("ctrl-shift-p")
         actions.edit.paste()
         actions.key("enter")
-        actions.sleep("100ms")
+        actions.sleep("200ms")
         clip.set_text(original_clipboard)
