@@ -29,7 +29,7 @@ empty escaped string:
     key(left)
 thin arrow: "->"
 arrow: "=>"
-assign: " = "
+(asign|assign): " = "
 minus: " - "
 plus: " + "
 times: " * "
