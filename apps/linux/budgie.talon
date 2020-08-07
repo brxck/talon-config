@@ -12,10 +12,10 @@ monitor left:
 monitor right: 
   key(shift-super-right)
 
-work down: 
-  key(super-pgdown)
-work up: 
-  key(super-pgup)
+# work down: 
+#   key(super-pgdown)
+# work up: 
+#   key(super-pgup)
 send down: 
   key(shift-super-pgdown)
 send up: 
