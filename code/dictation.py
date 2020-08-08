@@ -2,9 +2,31 @@ from talon import Module, ui, actions
 
 mod = Module()
 
+# Courtesy of https://github.com/dwiel/talon_community/blob/master/misc/dictation.py
+# Port for Talon's new api + wav2letter
 
-sentence_ends = {"period": ".", "question": "?", "exclamation": "!", "enter": "\n"}
-punctuation = {"comma": ",", "semicolon": ";", "dash": "-", "colon": ":"}
+# dictionary of sentence ends. No space should appear before these.
+sentence_ends = {
+    ".": ".",
+    "?": "?",
+    "!": "!",
+    # these are mapped with names since passing "\n" didn't work for reasons
+    "new-paragraph": "\n\n",
+    "new-line": "\n",
+}
+
+# dictionary of punctuation. no space before these.
+punctuation = {
+    ",": ",",
+    ":": ":",
+    ";": ";",
+    "-": "-",
+    "/": "/",
+    "-": "-",
+    ")": ")",
+}
+
+no_space_after_these = set("-/(")
 
 
 class AutoFormat:
@@ -17,28 +39,29 @@ class AutoFormat:
         self.caps = True
         self.space = False
 
-    def insert_word(self, word):
-        symbol = None
-        if word in sentence_ends:
-            symbol = sentence_ends[word]
-
-        elif word in punctuation:
-            symbol = punctuation[word]
-
-        elif self.space and word[0]:
-            actions.insert(" ")
-
-        if self.caps:
-            word = word.capitalize()
-
-        actions.insert(symbol or word)
-
-        self.space = symbol != "\n"
-        self.caps = word in sentence_ends
-
-    def phrase(self, text):
+    def insert(self, text):
+        result = ""
         for word in text.split():
-            self.insert_word(word)
+            is_sentence_end = False
+            is_punctuation = False
+            if word in sentence_ends:
+                word = sentence_ends[word]
+                is_sentence_end = True
+
+            elif word in punctuation:
+                word = punctuation[word]
+                # do  nothing
+                is_punctuation = True
+
+            elif self.space:
+                actions.insert(" ")
+
+            if self.caps:
+                word = word.capitalize()
+
+            actions.insert(word)
+            self.space = "\n" not in word and word[-1] not in no_space_after_these
+            self.caps = is_sentence_end
 
 
 auto_format = AutoFormat()
@@ -46,6 +69,6 @@ auto_format = AutoFormat()
 
 @mod.action_class
 class Actions:
-    def insert_formatted(text: str):
+    def dictate(text: str):
         """Insert auto formatted text"""
-        auto_format.phrase(text)
+        auto_format.insert(text)

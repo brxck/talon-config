@@ -3,6 +3,10 @@ from typing import Set
 from talon import Module, Context, actions
 import sys
 
+default_alphabet = "air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip".split(
+    " "
+)
+letters_string = "abcdefghijklmnopqrstuvwxyz"
 
 default_digits = "zero one two three four five six seven eight nine".split(" ")
 numbers = [str(i) for i in range(10)]
@@ -77,11 +81,11 @@ def key(m) -> str:
 
 ctx = Context()
 ctx.lists["self.modifier"] = {
+    "alt": "alt",
     "command": "cmd",
     "control": "ctrl",  #'troll':   'ctrl',
-    "shift": "shift",  #'sky':     'shift',
-    "alt": "alt",
     "option": "alt",
+    "shift": "shift",  #'sky':     'shift',
     "super": "super",
 }
 

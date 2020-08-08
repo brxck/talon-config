@@ -92,16 +92,12 @@ git (annotate | blame): user.ide_git_annotate()
 git menu: user.ide_git_menu()
 
 # Terminal
-new terminal: user.ide_terminal_new()
-next terminal: user.ide_terminal_focus_next()
-trash terminal: user.ide_terminal_trash()
-(previous | last) terminal: user.ide_terminal_focus_previous()
-terminal scroll up: user.ide_terminal_scroll_up()
-terminal scroll down: user.ide_terminal_scroll_down()
-
-# Tool windows:
-command palette: user.ide_command_palette()
-open containing folder | show in explorer | show in finder: user.ide_reveal_in_file_manager()
+#new terminal: user.ide_terminal_new()
+#next terminal: user.ide_terminal_focus_next()
+#trash terminal: user.ide_terminal_trash()
+#(previous | last) terminal: user.ide_terminal_focus_previous()
+#terminal scroll up: user.ide_terminal_scroll_up()
+#terminal scroll down: user.ide_terminal_scroll_down()
 
 # Toggling various tool windows
 toggle project: user.ide_toggle_project()
@@ -167,18 +163,10 @@ step smart: user.ide_step_smart()
 step to line: user.ide_step_to_line()
 continue: user.ide_continue()
 # Grow / Shrink
-# (grow | shrink) window right: user.ide_resize_window_right()
-# (grow | shrink) window left: user.ide_resize_window_left()
-# (grow | shrink) window up: user.ide_resize_window_up()
-# (grow | shrink) window down: user.ide_resize_window_down()
-
-# Editing
-drag up:
-	edit.line_swap_up()
-
-drag down:
-	edit.line_swap_down()
-
+(grow | shrink) window right: user.ide_resize_window_right()
+(grow | shrink) window left: user.ide_resize_window_left()
+(grow | shrink) window up: user.ide_resize_window_up()
+(grow | shrink) window down: user.ide_resize_window_down()
 copy [line] down: user.ide_editor_copylines_down()
 copy [line] up: user.ide_editor_copylines_up()
 select less: user.ide_select_less()

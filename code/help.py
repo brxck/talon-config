@@ -611,4 +611,3 @@ def commands_updated(_):
 
 refresh_context_command_map()
 
-refresh_context_command_map()
