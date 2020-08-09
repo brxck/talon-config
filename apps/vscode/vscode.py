@@ -1,3 +1,5 @@
+import socket
+import os
 from talon import Context, actions, ui, Module, app, clip
 from typing import List, Union
 
@@ -13,6 +15,28 @@ app: Code
 app: Visual Studio Code
 app: Code.exe
 """
+
+
+class VSCodeSocket:
+    def __init__(self):
+        self.connect()
+
+    def connect(self):
+        self.client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        self.client.connect("/tmp/vscode_commander.sock")
+
+    def send(self, command):
+        try:
+            self.client.send(command.encode("utf-8"))
+        except Exception:
+            print(f"VSCodeSocket Error: {error}")
+            print("Attempting to reconnect...")
+            self.client.close()
+            self.connect()
+            self.client.send(command.encode("utf-8"))
+
+
+vscode_socket = VSCodeSocket()
 
 
 @ctx.action_class("win")
@@ -37,52 +61,15 @@ class win_actions:
         return actions.win.filename().split(".")[-1]
 
 
-@ctx.action_class("edit")
-class edit_actions:
-    def find(text: str):
-        if is_mac:
-            actions.key("cmd-f")
-        else:
-            actions.key("ctrl-f")
-
-        actions.insert(text)
-
-    def line_swap_up():
-        actions.key("alt-up")
-
-    def line_swap_down():
-        actions.key("alt-down")
-
-    def line_clone():
-        actions.key("shift-alt-down")
-
-
 @mod.action_class
 class Actions:
     def vscode(command: str):
-        """Execute command via command palette. Preserves the clipboard."""
-        # Clip is noticeably faster than insert
-        original_clipboard = clip.text()
-        clip.set_text(f"{command}")
-        if not is_mac:
-            actions.key("ctrl-shift-p")
-        else:
-            actions.key("cmd-shift-p")
-
-        actions.edit.paste()
-        actions.key("enter")
-        actions.sleep("200ms")
-        clip.set_text(original_clipboard)
+        """Execute command via Unix domain socket."""
+        vscode_socket.send(command)
 
     def vscode_ignore_clipboard(command: str):
-        """Execute command via command palette. Does NOT preserve the clipboard for commands like copyFilePath"""
-        clip.set_text(f"{command}")
-        if not is_mac:
-            actions.key("ctrl-shift-p")
-        else:
-            actions.key("cmd-shift-p")
-        actions.edit.paste()
-        actions.key("enter")
+        """Preserved for ease of compatibility."""
+        vscode_socket.send(command)
 
 
 @ctx.action_class("user")
