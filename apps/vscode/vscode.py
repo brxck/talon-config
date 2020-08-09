@@ -43,10 +43,6 @@ vscode_socket = VSCodeSocket()
 class win_actions:
     def filename():
         title = actions.win.title()
-        # this doesn't seem to be necessary on VSCode for Mac
-        # if title == "":
-        #    title = ui.active_window().doc
-
         if is_mac:
             result = title.split(" — ")[0]
         else:
@@ -74,7 +70,7 @@ class Actions:
 
 @ctx.action_class("user")
 class user_actions:
-    # snippet.py support beginHelp close
+    # snippet.py support begin
     def snippet_search(text: str):
         actions.user.vscode("Insert Snippet")
         actions.insert(text)
@@ -229,4 +225,3 @@ class user_actions:
             actions.key("ctrl-alt-enter")
 
     # find_and_replace.py support end
-

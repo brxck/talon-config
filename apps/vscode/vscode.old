@@ -251,7 +251,7 @@ cursor redo:
 cursor up:
     user.vscode("editor.action.insertCursorAbove")
 cursor down:
-    user.vscode("editor.action.insertCursorpBelow")
+    user.vscode("editor.action.insertCursorBelow")
 cursor lines:
     user.vscode("editor.action.insertCursorAtEndOfEachLineSelected")
 
