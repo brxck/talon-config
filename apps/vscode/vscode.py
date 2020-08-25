@@ -8,13 +8,7 @@ is_mac = app.platform == "mac"
 ctx = Context()
 mod = Module()
 
-ctx.matches = r"""
-app: Code
-app: Code - OSS
-app: Code
-app: Visual Studio Code
-app: Code.exe
-"""
+ctx.matches = r"title: /.* - Visual Studio Code$/"
 
 
 class VSCodeSocket:
@@ -22,15 +16,19 @@ class VSCodeSocket:
         self.connect()
 
     def connect(self):
-        self.client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        self.client.connect("/tmp/vscode_commander.sock")
+        try:
+            self.client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            self.client.connect("/tmp/vscode_commander.sock")
+        except FileNotFoundError:
+            print("VSCodeSocket: Connection failed. Socket does not exist.")
+        print("VSCodeSocket: Connected.")
 
     def send(self, command):
         try:
             self.client.send(command.encode("utf-8"))
-        except Exception:
-            print(f"VSCodeSocket Error: {error}")
-            print("Attempting to reconnect...")
+        except Exception as error:
+            print(f"VSCodeSocket: {error}")
+            print("VSCodeSocket: Reconnecting...")
             self.client.close()
             self.connect()
             self.client.send(command.encode("utf-8"))
