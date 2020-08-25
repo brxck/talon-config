@@ -16,12 +16,18 @@ monitor right:
 #   key(super-pgdown)
 # work up: 
 #   key(super-pgup)
-send down: 
-  key(shift-super-pgdown)
-send up: 
-  key(shift-super-pgup)
-# work <nnavi10>: 
-# 	key(super-%(nnavi10)d)
+work send <digits>:
+  key(shift:down)
+  key(super:down)
+  key("{digits}")
+  key(super:up)
+  key(shift:up)
+
+work <digits>:
+  key(super:down)
+  key("{digits}")
+  key(super:up)
+
 # send <nnavi10>: 
 # 	key(shift-super-%(nnavi10)d)
 
