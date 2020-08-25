@@ -32,7 +32,7 @@ action(edit.jump_line):
     user.vscode("workbench.action.gotoLine")
 action(edit.delete_word):
 	actions.edit.select_word()
-    actions.edit.delete()
+	actions.edit.delete()
 action(edit.delete_line): 
     user.vscode("editor.action.deleteLines")
 action(edit.line_insert_down):
@@ -93,7 +93,7 @@ action(user.multi_cursor_select_fewer_occurrences):
 action(user.multi_cursor_select_more_occurrences):
 	user.vscode("editor.action.addSelectionToNextFindMatch")
 
-please [<user.text>]: 
+command [<user.text>]: 
   user.vscode("workbench.action.showCommands")
   insert(user.text or "")
 
@@ -146,21 +146,33 @@ zen switch:
 	user.vscode("workbench.action.toggleZenMode")
 
 # File Commands
+file open:
+    user.vscode("workbench.action.files.openFile")
+folder open:
+    user.vscode("workbench.action.files.openFolder")
 go to [<user.text>]: 
   user.vscode("workbench.action.quickOpen")
   insert(text or "")
 file copy path:
 	user.vscode_ignore_clipboard("copyFilePath") 
-file create sibling:
+file new:
 	user.vscode("explorer.newFile")  
-file create:
+editor new:
 	user.vscode("workbench.action.files.newUntitledFile")
 file open folder:
 	user.vscode("revealFileInOS")
 file rename:
 	user.vscode("renameFile")
 file reveal:
-	user.vscode("workbench.files.action.showActiveFileInExplorer") 
+	user.vscode("workbench.files.action.showActiveFileInExplorer")
+save as:
+    user.vscode("workbench.action.files.saveAs")
+save all:
+    user.vscode("workbench.action.files.saveAll")
+save ugly:
+    user.vscode("workbench.action.files.saveWithoutFormatting")
+save closed:
+    user.vscode("workbench.action.closeUnmodifiedEditors")
 
 # Language Features
 suggest show:
@@ -189,15 +201,11 @@ problem last:
 	user.vscode("editor.action.marker.prevInFiles")
 problem fix:
 	user.vscode("problems.action.showQuickFixes")
-rename that:
-	user.vscode("editor.action.rename")
-refactor that:
-	user.vscode("editor.action.refactor")
 whitespace trim:
 	user.vscode("editor.action.trimTrailingWhitespace")
 language switch:
 	user.vscode("workbench.action.editor.changeLanguageMode")
-refactor rename:
+refactor name:
 	user.vscode("editor.action.rename")
 refactor this:
 	user.vscode("editor.action.refactor")
@@ -325,7 +333,7 @@ copy [line] up:
 
 select less:
 	user.vscode("editor.action.smartSelect.shrink")
-select (more|this):
+select more:
 	user.vscode("editor.action.smartSelect.expand")
 
 # Emmet

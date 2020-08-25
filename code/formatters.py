@@ -144,7 +144,7 @@ formatters_words = {
     "dubstring": formatters_dict["DOUBLE_QUOTED_STRING"],
     "hammer": formatters_dict["PUBLIC_CAMEL_CASE"],
     "snake": formatters_dict["SNAKE_CASE"],
-    "smash": formatters_dict["NO_SPACES"],
+    "gum": formatters_dict["NO_SPACES"],
     "spine": formatters_dict["DASH_SEPARATED"],
     "packed": formatters_dict["DOUBLE_COLON_SEPARATED"],
     "yell": formatters_dict["ALL_CAPS"],

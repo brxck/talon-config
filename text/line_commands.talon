@@ -47,8 +47,8 @@ tag: line_commands
 <user.navigation_verbs> camel left: user.move_camel_left(navigation_verbs)
 <user.navigation_verbs> camel right: user.move_camel_right(navigation_verbs)
 
-lend: edit.line_end()
-bend: edit.line_start()
+# lend: edit.line_end()
+# bend: edit.line_start()
 drag [line] up: edit.line_swap_up()
 drag [line] down: edit.line_swap_down()
 clone (line|this): edit.line_clone()

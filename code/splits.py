@@ -42,5 +42,11 @@ class Actions:
     def split_last():
         """Goes to last split"""
 
+    def split_above():
+        """Goes to above split"""
+
+    def split_below():
+        """Goes to below split"""
+
     def split_number(index: int):
         """Navigates to a the specified split"""
