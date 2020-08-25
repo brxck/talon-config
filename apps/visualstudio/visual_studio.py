@@ -15,10 +15,17 @@ from typing import List, Union
 ctx = Context()
 mod = Module()
 
-ctx.matches = r"""
+apps = mod.apps
+apps.visual_studio = """
 os: windows
-app: Microsoft Visual Studio 2019
-app: devenv.exe
+and app.name: Microsoft Visual Studio 2019
+os: windows
+and app.name: devenv.exe
+"""
+
+
+ctx.matches = r"""
+app: visual_studio
 """
 
 
@@ -57,54 +64,55 @@ class edit_actions:
     def line_clone():
         actions.key("ctrl-d")
 
+    def jump_line(n: int):
+        actions.key("ctrl-g")
+        actions.sleep("100ms")
+        actions.insert(str(n))
+        actions.key("enter")
+
 
 @ctx.action_class("user")
 class user_actions:
     # snippet.py support beginHelp close
     def snippet_search(text: str):
         """TEST"""
-        # actions.user.vscode("Insert Snippet")
-        # actions.insert(text)
+        actions.key("ctrl-k ctrl-x")
 
-    def snippet_insert(text: str):
-        """Inserts a snippet"""
-        # actions.user.vscode("Insert Snippet")
-        # actions.insert(text)
-        # actions.key("enter")
+    # def snippet_insert(text: str):
+    #     """Inserts a snippet"""
 
-    def snippet_create():
-        """Triggers snippet creation"""
-        # actions.user.vscode("Preferences: Configure User Snippets")
+    # def snippet_create():
+    #     """Triggers snippet creation"""
 
     # snippet.py support end
 
-    def select_word(verb: str):
-        actions.key("ctrl-w")
-        actions.user.perform_selection_action(verb)
+    # def select_word(verb: str):
+    #     actions.key("ctrl-w")
+    #     actions.user.perform_selection_action(verb)
 
-    def select_next_occurrence(verbs: str, text: str):
-        actions.edit.find(text)
-        actions.sleep("100ms")
+    # def select_next_occurrence(verbs: str, text: str):
+    #     actions.edit.find(text)
+    #     actions.sleep("100ms")
 
-        actions.key("esc")
-        if verbs is not None:
-            actions.user.perform_selection_action(verbs)
+    #     actions.key("esc")
+    #     if verbs is not None:
+    #         actions.user.perform_selection_action(verbs)
 
-    def select_previous_occurrence(verbs: str, text: str):
-        actions.edit.find(text)
-        actions.key("shift-enter")
-        actions.sleep("100ms")
-        actions.key("esc")
-        if verbs is not None:
-            actions.user.perform_selection_action(verbs)
+    # def select_previous_occurrence(verbs: str, text: str):
+    #     actions.edit.find(text)
+    #     actions.key("shift-enter")
+    #     actions.sleep("100ms")
+    #     actions.key("esc")
+    #     if verbs is not None:
+    #         actions.user.perform_selection_action(verbs)
 
-    def go_to_line(verb: str, line: int):
-        actions.key("ctrl-g")
-        actions.insert(str(line))
-        actions.key("enter")
+    # def go_to_line(verb: str, line: int):
+    #     actions.key("ctrl-g")
+    #     actions.insert(str(line))
+    #     actions.key("enter")
 
-        if verb is not None:
-            actions.user.perform_movement_action(verb)
+    #     if verb is not None:
+    #         actions.user.perform_movement_action(verb)
 
     # def tab_jump(number: int):
     #     if number < 10:
@@ -185,6 +193,17 @@ class user_actions:
     def replace_confirm_all():
         """Confirm replace all"""
         actions.key("alt-a")
+
+    def select_previous_occurrence(text: str):
+        actions.edit.find(text)
+        actions.key("shift-enter")
+        actions.sleep("100ms")
+        actions.key("esc")
+
+    def select_next_occurrence(text: str):
+        actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("esc")
 
     # find_and_replace.py support end
 

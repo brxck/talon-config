@@ -7,6 +7,10 @@ is_mac = app.platform == "mac"
 
 ctx = Context()
 mod = Module()
+mod.apps.vscode = "app.name: Code.exe"
+mod.apps.vscode = "app.name: Visual Studio Code"
+mod.apps.vscode = "app.name: Code"
+mod.apps.vscode = "app.name: Code - OSS"
 
 ctx.matches = r"title: /.* - Visual Studio Code$/"
 
@@ -84,36 +88,6 @@ class user_actions:
         actions.user.vscode("Preferences: Configure User Snippets")
 
     # snippet.py support end
-
-    def select_word(verb: str):
-        if not is_mac:
-            actions.key("ctrl-d")
-        else:
-            actions.key("cmd-d")
-        actions.user.perform_selection_action(verb)
-
-    def select_next_occurrence(verbs: str, text: str):
-        actions.edit.find(text)
-        actions.sleep("100ms")
-        actions.key("esc")
-        if verbs is not None:
-            actions.user.perform_selection_action(verbs)
-
-    def select_previous_occurrence(verbs: str, text: str):
-        actions.edit.find(text)
-        actions.key("shift-enter")
-        actions.sleep("100ms")
-        actions.key("esc")
-        if verbs is not None:
-            actions.user.perform_selection_action(verbs)
-
-    def go_to_line(verb: str, line: int):
-        actions.user.vscode("workbench.action.gotoLine")
-        actions.insert(str(line))
-        actions.key("enter")
-
-        if verb is not None:
-            actions.user.perform_movement_action(verb)
 
     def tab_jump(number: int):
         if number < 10:
@@ -221,5 +195,15 @@ class user_actions:
             actions.key("cmd-enter")
         else:
             actions.key("ctrl-alt-enter")
+
+    def select_previous_occurrence(text: str):
+        actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("shift-enter esc")
+
+    def select_next_occurrence(text: str):
+        actions.edit.find(text)
+        actions.sleep("100ms")
+        actions.key("esc")
 
     # find_and_replace.py support end
