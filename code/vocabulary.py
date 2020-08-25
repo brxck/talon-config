@@ -2,15 +2,11 @@ from talon import Context, Module, actions, grammar
 
 
 simple_vocabulary = [
-    "nmap",
     "admin",
-    "cisco",
-    "citrix",
     "vpn",
     "dns",
-    "minecraft",
     "regex",
-    "VPC",
+    "vpc",
     "fso",
     "docker",
     "lambda",
@@ -34,6 +30,8 @@ simple_vocabulary = [
     "doggo",
     "aravaipa",
     "cognito",
+    "html",
+    "pdf",
 ]
 
 mapping_vocabulary = {
@@ -58,11 +56,15 @@ mapping_vocabulary = {
     "cash": "cache",
     "V S code": "vscode",
     "curse her": "cursor",
+    "centre": "center",
+    "ad": "add",
+    "dada": "data",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
 
 mod = Module()
+
 
 @mod.capture(rule="({user.vocabulary})")
 def vocabulary(m) -> str:
