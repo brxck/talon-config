@@ -1,4 +1,4 @@
-tag: browser
+tag: user.browser
 -
 go location: browser.focus_address()
 go home: browser.go_home()
@@ -11,8 +11,8 @@ bookmark bar: browser.bookmarks_bar()
 bookmark that: browser.bookmark()
 bookmark tabs: browser.bookmark_tabs()
 
-(refresh | reload) that: browser.reload()
-(refresh | reload) that hard: browser.reload_hard()
+(refresh | reload): browser.reload()
+(refresh | reload) hard: browser.reload_hard()
 
 show downloads: browser.show_downloads()
 show extensions: browser.show_extensions()

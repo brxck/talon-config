@@ -1,9 +1,9 @@
 title: /.* - Visual Studio Code$/
 -
-tag(): find_and_replace
-tag(): line_commands
+tag(): user.find_and_replace
+tag(): user.line_commands
 tag(): snippets
-tag(): tabs
+tag(): user.tabs
 
 #talon app actions
 action(app.tab_close):
@@ -75,7 +75,7 @@ action(user.split_window_vertically):
 action(user.split_window):
 	user.vscode("workbench.action.splitEditor")
 
-tag(): multiple_cursors # multiple_cursor.py
+tag(): user.multiple_cursors # multiple_cursor.py
 action(user.multi_cursor_add_above):
 	user.vscode("editor.action.insertCursorAbove")
 action(user.multi_cursor_add_below):

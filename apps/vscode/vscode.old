@@ -1,8 +1,8 @@
 title: /.* - Visual Studio Code$/
 -
-tag(): tabs
-# tag(): ide
-# tag(): line_commands
+tag(): user.tabs
+# tag(): user.ide
+# tag(): user.line_commands
 # tag(): splits
 # tag(): snippets
 

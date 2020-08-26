@@ -1,6 +1,6 @@
 app: apple_terminal
 -
-tag(): terminal
+tag(): user.terminal
 tag(): user.file_manager
 action(user.file_manager_open_parent):
     insert("cd ..")

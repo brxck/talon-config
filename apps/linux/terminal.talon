@@ -3,7 +3,7 @@ tag: terminal
 -
 tag(): user.file_manager
 #todo: generic tab commands
-#tag(): tabs
+#tag(): user.tabs
 action(edit.page_down):
   key(shift-pagedown)
 action(edit.page_up):

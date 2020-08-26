@@ -1,8 +1,8 @@
 app: kitty
 os: linux
 -
-tag(): terminal
-tag(): tabs
+tag(): user.terminal
+tag(): user.tabs
 
 scroll line up:
   key(ctrl-shift-up)
