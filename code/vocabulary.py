@@ -59,6 +59,12 @@ mapping_vocabulary = {
     "centre": "center",
     "ad": "add",
     "dada": "data",
+    "maine": "main",
+    "thee": "the",
+    "constance": "constants",
+    "chais": "chalice",
+    "post grass": "postgres",
+    "coated": "coded",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))

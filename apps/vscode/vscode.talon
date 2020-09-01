@@ -2,7 +2,7 @@ title: /.* - Visual Studio Code$/
 -
 tag(): user.find_and_replace
 tag(): user.line_commands
-tag(): snippets
+tag(): user.snippets
 tag(): user.tabs
 
 #talon app actions

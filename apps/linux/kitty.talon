@@ -1,7 +1,7 @@
 app: kitty
 os: linux
 -
-tag(): user.terminal
+tag(): terminal
 tag(): user.tabs
 
 scroll line up:

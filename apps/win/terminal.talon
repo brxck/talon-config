@@ -1,7 +1,7 @@
 app: windows_terminal
 app: windows_command_processor
 -
-tag(): user.terminal
+tag(): terminal
 tag(): user.file_manager
 
 run last: key(up enter)

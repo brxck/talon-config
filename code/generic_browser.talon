@@ -1,4 +1,4 @@
-tag: user.browser
+tag: browser
 -
 go location: browser.focus_address()
 go home: browser.go_home()
