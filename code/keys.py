@@ -91,7 +91,7 @@ ctx.lists["self.modifier"] = {
 alphabet = dict(zip(default_alphabet, letters_string))
 ctx.lists["self.letter"] = alphabet
 ctx.lists["self.symbol"] = {
-    "tock": "`",
+    "smite": "`",
     "`": "`",
     "drip": ",",
     ",": ",",
@@ -112,7 +112,7 @@ ctx.lists["self.symbol"] = {
     "tilde": "~",
     "bang": "!",
     "doll": "$",
-    "flat": "_",
+    "scout": "_",
     "cot": ":",
     "caught": ":",
     "bend": "(",
@@ -138,6 +138,10 @@ ctx.lists["self.arrow"] = {
     "ross": "right",
     "sauce": "up",
     "dunce": "down",
+    "left": "left",
+    "right": "right",
+    "up": "up",
+    "down": "down",
 }
 
 simple_keys = [

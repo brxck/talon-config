@@ -1,43 +1,31 @@
-window up: 
-  key(super-up)
-window down: 
-  key(super-down)
-window left: 
-  key(super-left)
-window right: 
-  key(super-right)
-
-monitor left: 
-  key(shift-super-left)
-monitor right: 
-  key(shift-super-right)
-
-# work down: 
-#   key(super-pgdown)
-# work up: 
-#   key(super-pgup)
-work send <digits>:
-  key(shift:down)
+window <user.arrow>:
   key(super:down)
-  key("{digits}")
+  key(arrow)
   key(super:up)
-  key(shift:up)
+
+monitor <user.arrow>: 
+  key(shift:down super:down)
+  key(arrow)
+  key(super:up shift:up)
+
+work send <digits>:
+  key(shift:down super:down)
+  key("{digits}")
+  key(shift:up super:up)
 
 work <digits>:
   key(super:down)
   key("{digits}")
   key(super:up)
 
-# send <nnavi10>: 
-# 	key(shift-super-%(nnavi10)d)
 
-quake (down|it):
-  user.system_command("tdrop2 kitty down")
+quake <user.arrow>:
+  user.system_command("tdrop2 kitty {arrow}")
 quake up:
-  user.system_command("tdrop2 kitty up")
+  user.system_command("tdrop2 kitty {arrow}")
 quake left:
-  user.system_command("tdrop2 kitty left")
+  user.system_command("tdrop2 kitty {arrow}")
 quake right:
-  user.system_command("tdrop2 kitty right")
+  user.system_command("tdrop2 kitty {arrow}")
 quake full:
-  user.system_command("tdrop2 kitty full")
+  user.system_command("tdrop2 kitty {arrow}")
