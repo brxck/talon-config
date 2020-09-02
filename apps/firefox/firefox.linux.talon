@@ -2,7 +2,7 @@ os: linux
 app: Firefox
 app: firefox
 -
-tag(): user.browser
+tag(): browser
 tag(): user.firefox
 tag(): user.tabs
 

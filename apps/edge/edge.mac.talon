@@ -1,7 +1,7 @@
 os: mac
 app: microsoft_edge
 -
-tag(): user.browser
+tag(): browser
 tag(): user.tabs
 #action(browser.address):
 

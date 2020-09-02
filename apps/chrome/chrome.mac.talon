@@ -1,7 +1,7 @@
 os: mac
 app: chrome
 -
-tag(): user.browser
+tag(): browser
 tag(): user.tabs
 #action(browser.address):
 
