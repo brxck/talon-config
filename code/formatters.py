@@ -1,3 +1,4 @@
+import re
 from talon import Module, Context, actions, ui, imgui
 from talon.grammar import Phrase
 from typing import List, Union
@@ -66,6 +67,14 @@ def format_text_helper(word_list, fmtrs: str, tracked: bool):
         ]
 
     return result
+
+
+def formatted_to_phrase(text):
+    # Insert spaces between case changes
+    text = re.sub(r"((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))", r" \1", text)
+    # Replace separators with whitespace
+    text = re.sub(r"[_\-\/:\\]", " ", text)
+    return text
 
 
 NOSEP = True
@@ -221,6 +230,12 @@ class Actions:
         """Reformats last formatted phrase"""
         global last_phrase
         return FormatText(last_phrase, formatters)
+
+    def formatters_reformat_selection(formatters: str) -> str:
+        """Reformats selected phrase"""
+        selection = actions.edit.selected_text()
+        phrase = formatted_to_phrase(selection)
+        return FormatText(phrase, formatters)
 
 
 @ctx.capture(rule="{self.formatters}+")
