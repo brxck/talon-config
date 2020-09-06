@@ -29,12 +29,12 @@ action(edit.indent_less):
 action(edit.indent_more):
 	user.vscode("editor.action.indentLines")
 action(edit.jump_line):
-    user.vscode("workbench.action.gotoLine")
+  user.vscode("workbench.action.gotoLine")
 action(edit.delete_word):
 	actions.edit.select_word()
 	actions.edit.delete()
 action(edit.delete_line): 
-    user.vscode("editor.action.deleteLines")
+	user.vscode("editor.action.deleteLines")
 action(edit.line_insert_down):
 	user.vscode("editor.action.insertLineAfter")
 action(edit.line_insert_up):
@@ -42,15 +42,16 @@ action(edit.line_insert_up):
 action(edit.line_swap_up):
 	user.vscode("editor.action.moveLinesUpAction")
 action(edit.line_swap_down):
-    user.vscode("editor.action.moveLinesDownAction")
-action(edit.select_line):
-	user.vscode("expandLineSelection")
+	user.vscode("editor.action.moveLinesDownAction")
+# action(edit.select_line): # metago
+# 	user.vscode("expandLineSelection")
 action(edit.select_none):
 	user.vscode("cancelSelection")
 action(edit.select_word):
 	user.vscode("editor.action.addSelectionToNextFindMatch")
 
-tag(): splits # splits.py
+# splits.py
+tag(): user.splits
 action(user.split_clear_all):
 	user.vscode("workbench.action.editorLayoutSingle")
 action(user.split_clear):
@@ -59,7 +60,8 @@ action(user.split_flip):
 	user.vscode("workbench.action.toggleEditorGroupLayout") 
 action(user.split_last):
 	user.vscode("workbench.action.focusLeftGroup")
-action(user.split_next):  user.vscode("workbench.action.focusRightGroup")
+action(user.split_next): 
+	user.vscode("workbench.action.focusRightGroup")
 action(user.split_window_down):
 	user.vscode("workbench.action.moveEditorToBelowGroup")
 action(user.split_window_horizontally):
@@ -75,7 +77,8 @@ action(user.split_window_vertically):
 action(user.split_window):
 	user.vscode("workbench.action.splitEditor")
 
-tag(): user.multiple_cursors # multiple_cursor.py
+# multiple_cursor.py
+tag(): user.multiple_cursors
 action(user.multi_cursor_add_above):
 	user.vscode("editor.action.insertCursorAbove")
 action(user.multi_cursor_add_below):
@@ -147,16 +150,18 @@ zen switch:
 
 # File Commands
 file open:
-    user.vscode("workbench.action.files.openFile")
+	user.vscode("workbench.action.files.openFile")
 folder open:
-    user.vscode("workbench.action.files.openFolder")
+	user.vscode("workbench.action.files.openFolder")
+(folder|file) recent:
+	user.vscode("workbench.action.openRecent")
 go to [<user.text>]: 
   user.vscode("workbench.action.quickOpen")
   insert(text or "")
 file copy path:
 	user.vscode_ignore_clipboard("copyFilePath") 
 file new:
-	user.vscode("explorer.newFile")  
+	user.vscode("explorer.newFile")
 editor new:
 	user.vscode("workbench.action.files.newUntitledFile")
 file open folder:
