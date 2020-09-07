@@ -3,6 +3,7 @@ os: linux
 -
 tag(): terminal
 tag(): user.tabs
+tag(): user.splits
 
 scroll line up:
   key(ctrl-shift-up)
@@ -34,41 +35,38 @@ action(app.tab_next):
 action(app.tab_previous):
   key(ctrl-shift-left)
   
-layout switch:
-  key(ctrl-shift-l)
-  
-tab forward:
+tab push:
   key(ctrl-shift-.)
   
-tab backward:
+tab shift:
   key(ctrl-shift-,)
   
 tab title:
   key(ctrl-shift-alt-t)
   
-pane new:
-  key(ctrl-shift-enter)
-  
 window new:
   key(ctrl-shift-n)
+
+action(user.split_flip):
+  key(ctrl-shift-l)
+
+action(user.split_window):
+  key(ctrl-shift-enter)
   
-pane close:
+action(user.split_clear):
   key(ctrl-shift-w)
   
-pane next:
+action(user.split_next):
   key(ctrl-shift-])
   
-pane previous:
+action(user.split_last):
   key(ctrl-shift-[)
   
-pane forward:
+action(user.split_window_right):
   key(ctrl-shift-f)
   
-pane backward:
+action(user.split_window_left):
   key(ctrl-shift-b)
 
-pane top:
-  key(ctrl-shift-`)
-
-pane <number>:
+action(user.split_number):
   key(ctrl-shift-{number})
