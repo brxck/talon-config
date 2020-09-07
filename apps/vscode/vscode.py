@@ -1,7 +1,6 @@
 import socket
-import os
-from talon import Context, actions, ui, Module, app, clip
-from typing import List, Union
+from time import sleep
+from talon import Context, actions, Module, app
 
 is_mac = app.platform == "mac"
 
@@ -25,17 +24,23 @@ class VSCodeSocket:
             self.client.connect("/tmp/vscode_commander.sock")
         except FileNotFoundError:
             print("VSCodeSocket: Connection failed. Socket does not exist.")
-        print("VSCodeSocket: Connected.")
+        else:
+            print("VSCodeSocket: Connected.")
 
     def send(self, command):
         try:
-            self.client.send(command.encode("utf-8"))
+            self.client.sendall(command.encode("utf-8"))
         except Exception as error:
             print(f"VSCodeSocket: {error}")
-            print("VSCodeSocket: Reconnecting...")
             self.client.close()
+            print("VSCodeSocket: Reconnecting...")
             self.connect()
-            self.client.send(command.encode("utf-8"))
+            try:
+                self.client.send(command.encode("utf-8"))
+            except Exception:
+                app.notify("VSCode Socket Failed")
+        else:
+            sleep(0.1)
 
 
 vscode_socket = VSCodeSocket()
