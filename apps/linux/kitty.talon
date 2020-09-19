@@ -69,4 +69,19 @@ action(user.split_window_left):
   key(ctrl-shift-b)
 
 action(user.split_number):
-  key(ctrl-shift-{number})
+  key(ctrl-shvift-{number})
+
+whack:
+  key(ctrl-w)
+whack all:
+	key(ctrl-k)
+bump:
+  key(escape d)
+bump all:
+  key(ctrl-u)
+drop:
+  key(ctrl-y)
+undo:
+  key(ctrl-_)
+last argument:
+  key(alt-.)
