@@ -336,9 +336,9 @@ copy [line] down:
 copy [line] up:
 	user.vscode("editor.action.copyLinesUpAction")
 
-select less:
+take less:
 	user.vscode("editor.action.smartSelect.shrink")
-select more:
+take more:
 	user.vscode("editor.action.smartSelect.expand")
 
 # Emmet

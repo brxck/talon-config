@@ -61,6 +61,10 @@ word_map = {
     "chais": "chalice",
     "curse her": "cursor",
     "jango": "django",
+    "eye three": "i3",
+    "laa": "lambda",
+    "rose": "rows",
+    "coat": "code",
 }
 word_map.update({x.lower(): x for x in capitalize})
 
@@ -97,15 +101,20 @@ simple_vocabulary = [
     "cognito",
     "html",
     "pdf",
+    "covid",
+    "eds",
 ]
 
 # Add vocabulary words (or phrases you want treated as words) here that aren't
 # recognized by Talon and are written differently than they're pronounced.
 mapping_vocabulary = {
-    "jay son": "json",
+    "jayson": "json",
     "V S code": "vscode",
     "post grass": "postgres",
     "yall": "y'all",
+    "E signature": "esignature",
+    "E D S Viewer": "edsviewer",
+    "I P address": "ip address",
 }
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))
 
