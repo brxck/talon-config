@@ -5,11 +5,12 @@ https://talon.wiki/unofficial_talon_docs/ is a great place to learn about Talon 
 
 # knausj_talon
 
-Talon configs for Mac, Windows, and Linux. Very much in progress. This is also intended to work with both Dragon Naturally Speaking and wav2letter.
+Talon configs for Mac, Windows, and Linux. Very much in progress. This is also intended to work with both Dragon Naturally Speaking and wav2letter.\
 
 Notes: 
-- commands are subject to change. I do my best to minimize changes, but I am moving to an [object][verb] standard slowly but surely.
-- I make extensive use of Talon's eye tracking features, so my grammar may be much smaller than others.
+- commands are subject to change. We do our best to minimize changes, but we are moving to an [object][verb] standard slowly but surely.
+- @knausj85 makes extensive use of Talon's eye tracking features, so the grammar for certain programs may be much smaller than you may require.
+- The repository was mostly developed with Dragon, so commands are mostly still optimized for that speech engine.
 
 ## Linux & Mac setup
 
@@ -29,7 +30,6 @@ The folder structure should look like:
 ~/.talon/user/knausj_talon/code
 ~/.talon/user/knausj_talon/lang
 ```
-
 
 ## Windows setup
 
@@ -131,6 +131,9 @@ https://github.com/knausj85/knausj_talon/blob/master/misc/window_management.talo
 
 e.g., `focus chrome` will focus the chrome application.
 
+### Screenshot commands
+
+
 ### Activating Programming Languages
 
 Specific programming languages may be activated by voice commands, or via title tracking.
@@ -172,9 +175,115 @@ https://www.howtogeek.com/121218/beginner-how-to-make-explorer-always-show-the-f
 
 For the Windows command line, the `refresh title` command will force the title to the current directory, and all directory commands (`follow 1`) will automatically update the title.
 
+Notes: 
+
+• Both Windows Explorer and Finder hide certain files and folder by default, so it's often best to use the imgui to list the options before issuing commands. 
+
+• If there no hidden files or folders, and the items are displayed in alphabetical order, you can typically issue the `follow <number>`, `file <number>` and `open <number>` commands based on the displayed order.
 
 ## Jetbrains commands
 
 For Jetbrains commands to work you must install https://plugins.jetbrains.com/plugin/10504-voice-code-idea
 into each editor.
+
+## Settings
+
+Several options are configurable via a single settings file out of the box. Any setting can be made context specific as needed (e.g., per-OS, per-app, etc). 
+
+https://github.com/knausj85/knausj_talon/blob/master/settings.talon
+
+
+
+```
+#adjust the scale of the imgui to my liking
+imgui.scale = 1.3
+# enable if you'd like the picker gui to automatically appear when explorer has focus
+user.file_manager_auto_show_pickers = 0
+#set the max number of command lines per page in help
+user.help_max_command_lines_per_page = 50
+# set the max number of contexts display per page in help
+user.help_max_contexts_per_page = 20
+# The default amount used when scrolling continuously
+user.mouse_continuous_scroll_amount = 80
+#stop continuous scroll/gaze scroll with a pop
+user.mouse_enable_pop_stops_scroll = 1
+#enable pop click with 'control mouse' mode
+user.mouse_enable_pop_click = 1
+#When enabled, the 'Scroll Mouse' GUI will not be shown.
+user.mouse_hide_mouse_gui = 0
+#hide cursor when mouse_wake is called to enable zoom mouse
+user.mouse_wake_hides_cursor = 0
+#the amount to scroll up/down (equivalent to mouse wheel on Windows by default)
+user.mouse_wheel_down_amount = 120
+```
+
+The most commonly adjusted settings are probably
+
+• `imgui.scale` to improve the visibility of all imgui-based windows (help, history, etc). This is simply a scale factor, 1.3 = 130%.
+
+• `user.help_max_command_lines_per_page` and `user.help_max_contexts_per_page` to ensure all help information is visible.
+
+• `user.mouse_wheel_down_amount` and `user.mouse_continuous_scroll_amount` for adjusting the scroll amounts for the various scroll commands.
+
+# Collaborators
+
+This repository is now officially a team effort. The following contributors have direct access:
+- @dwiel
+- @fidgetingbits
+- @knausj85 
+- @rntz
+
+Collaborators will reply to issues and pull requests as time and health permits. Please be patient.
+
+## Guidelines for collaborators
+
+1. Collaborators prioritize their health and their personal/professional needs first. Their time commitment to this effort is limited.
+2. For "minor" fixes and improvements/bugs/new apps, collaborators are free to contribute without any review
+3. For "significant" new development and refactors, collaborators should seek appropriate input and reviews from each-other. Collaborators are encouraged to open a discussion before committing their time to any major effort.
+
+# Contributing
+
+Anyone is welcome to submit PRs and report issues. 
+
+## Guidelines for contributions
+
+- Any addition to the global grammar will be scrutinized a bit more thoroughly. The more specific a new context, the less scrutiny that is typically applied.
+
+- New grammars should follow the [subject][verb] standard where-ever possible.
+
+- For Mac OS X, the bundle id should be used for defining app contexts, rather than the name. 
+
+- For Windows, both the friendly app name and exe name should be used for defining app contexts when they are different. For some people, the MUICache breaks.
+
+- For new web apps, ensure the domain is used to minimize potential mismatches
+https://github.com/knausj85/knausj_talon/blob/master/apps/web/window_titles.md
+
+- New applications should support the appropriate 'generic' grammars where possible
+
+```
+generic_browser.talon
+find_and_replace.talon
+line_commands.talon
+multiple_cursors.talon
+snippets.talon
+splits.talon
+tabs.talon
+```
+
+- New programming languages should support the appropriate 'generic' grammars where possible as well
+```
+operators.talon
+programming.talon
+comment.talon
+block_comment.talon
+```
+
+and should support the lists
+
+```
+user.code_functions
+user.code_libraries
+```
+
+where appropriate. See e.g. csharp.py/csharp.talon. At least, until we come up with something better 👍 
 

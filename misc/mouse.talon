@@ -15,8 +15,17 @@ wheel up: mouse_scroll(-20)
 	key("{modifiers}:up")
 
 wheel left: mouse_scroll(0, -40)
+wheel left here:
+    user.mouse_move_center_active_window()
+    mouse_scroll(0, -40)
 wheel tiny left: mouse_scroll(0, -20)
+wheel tiny left here:
+    user.mouse_move_center_active_window()
+    mouse_scroll(0, -20)
 wheel right: mouse_scroll(0, 40)
+wheel right here:
+    user.mouse_move_center_active_window()
+    mouse_scroll(0, 40)
 wheel tiny right: mouse_scroll(0, 20)
 
 mouse drag: user.mouse_drag()

@@ -13,7 +13,6 @@ and <user.format_text>$: insert(" {format_text}")
 phrase <user.text>$: insert(user.text)
 phrase <user.text> over: insert(user.text)
 
-(num|numb|number) <user.number_scaled>: insert(user.number_scaled)
 word <user.word>: insert(user.word)
 
 format help: user.formatters_help_toggle()

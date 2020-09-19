@@ -169,15 +169,24 @@ class Actions:
         for cur_app in ui.apps():
             if cur_app.name == wanted_app and not cur_app.background:
                 cur_app.focus()
+
+                # there is currently only a reliable way to do this on mac
+                if app.platform == "mac":
+                    while cur_app != ui.active_app():
+                        time.sleep(0.1)
+
                 break
 
     def switcher_launch(path: str):
         """Launch a new application by path"""
         ui.launch(path=path)
 
-    def switcher_list_running():
-        """Lists all running applications"""
-        gui.show()
+    def switcher_toggle_running():
+        """Shows/hides all running applications"""
+        if gui.showing:
+            gui.hide()
+        else:
+            gui.show()
 
     def switcher_hide_running():
         """Hides list of running applications"""
