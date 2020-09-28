@@ -65,7 +65,6 @@ def update_lists():
     global running_application_dict
     running_application_dict = {}
     running = {}
-    launch = {}
     for cur_app in ui.apps(background=False):
         name = cur_app.name
 
@@ -83,35 +82,7 @@ def update_lists():
     for override in overrides:
         running[override] = overrides[override]
 
-    if app.platform == "mac":
-        for base in (
-            "/Applications",
-            "/Applications/Utilities",
-            "/System/Applications",
-            "/System/Applications/Utilities",
-        ):
-            if os.path.isdir(base):
-                for name in os.listdir(base):
-                    # print(name)
-                    path = os.path.join(base, name)
-                    name = name.rsplit(".", 1)[0].lower()
-                    launch[name] = path
-                    words = name.split(" ")
-                    for word in words:
-                        if word and word not in launch:
-                            if len(name) > 6 and len(word) < 3:
-                                continue
-
-                            launch[word] = path
-    # lists = {
-    #     "self.running": running,
-    #     "self.launch": launch,
-    # }
-
-    # batch update lists
-    # print(str(running))
     ctx.lists["user.running"] = running
-    ctx.lists["user.launch"] = launch
 
 
 def update_overrides(name, flags):
@@ -120,7 +91,7 @@ def update_overrides(name, flags):
     overrides = {}
 
     if name is None or name == override_file_path:
-        print("update_overrides")
+        # print("update_overrides")
         with open(override_file_path, "r") as f:
             for line in f:
                 line = line.rstrip()
@@ -201,89 +172,36 @@ def gui(gui: imgui.GUI):
         gui.text(line)
 
 
+def update_launch_list():
+    if app.platform == "mac":
+        launch = {}
+        for base in (
+            "/Applications",
+            "/Applications/Utilities",
+            "/System/Applications",
+            "/System/Applications/Utilities",
+        ):
+            if os.path.isdir(base):
+                for name in os.listdir(base):
+                    # print(name)
+                    path = os.path.join(base, name)
+                    name = name.rsplit(".", 1)[0].lower()
+                    launch[name] = path
+                    words = name.split(" ")
+                    for word in words:
+                        if word and word not in launch:
+                            if len(name) > 6 and len(word) < 3:
+                                continue
 
-def update_overrides(name, flags):
-    """Updates the overrides list"""
-    global overrides
-    overrides = {}
+                            launch[word] = path
 
-    if name is None or name == override_file_path:
-        print("update_overrides")
-        with open(override_file_path, "r") as f:
-            for line in f:
-                line = line.rstrip()
-                line = line.split(",")
-                if len(line) == 2:
-                    overrides[line[0].lower()] = line[1].strip()
-
-        update_lists()
-
-
-update_overrides(None, None)
-fs.watch(overrides_directory, update_overrides)
-
-
-@mod.action_class
-class Actions:
-    def switcher_focus(name: str):
-        """Focus a new application by  name"""
-
-        wanted_app = name
-
-        # we should use the capture result directly if it's already in the
-        # list of running applications
-        # otherwise, name is from <user.text> and we can be a bit fuzzier
-        if name not in running_application_dict:
-
-            # don't process silly things like "focus i"
-            if len(name) < 3:
-                print("switcher_focus skipped: len({}) < 3".format(name))
-                return
-
-            running = ctx.lists["self.running"]
-            wanted_app = None
-
-            for running_name in running.keys():
-
-                if running_name == name or running_name.lower().startswith(
-                    name.lower()
-                ):
-                    wanted_app = running[running_name]
-                    break
-
-            if wanted_app is None:
-                return
-
-        for cur_app in ui.apps():
-            if cur_app.name == wanted_app and not cur_app.background:
-                cur_app.focus()
-                break
-
-    def switcher_launch(path: str):
-        """Launch a new application by path"""
-        ui.launch(path=path)
-
-    def switcher_list_running():
-        """Lists all running applications"""
-        gui.show()
-
-    def switcher_hide_running():
-        """Hides list of running applications"""
-        gui.hide()
-
-
-@imgui.open(software=False)
-def gui(gui: imgui.GUI):
-    gui.text("Names of running applications")
-    gui.line()
-    for line in ctx.lists["self.running"]:
-        gui.text(line)
+        ctx.lists["user.launch"] = launch
 
 
 def ui_event(event, arg):
-    if event in ("app_activate", "app_launch", "app_close", "win_open", "win_close"):
-        # print(f'------------------ event:{event}  arg:{arg}')
+    if event in ("app_launch", "app_close"):
         update_lists()
 
 
+update_launch_list()
 ui.register("", ui_event)

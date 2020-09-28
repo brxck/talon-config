@@ -2,9 +2,11 @@ import re
 from talon import Module, Context, actions, ui, imgui
 from talon.grammar import Phrase
 from typing import List, Union
+import re
 
 ctx = Context()
 key = actions.key
+edit = actions.edit
 
 words_to_keep_lowercase = (
     "a,an,the,at,by,for,in,is,of,on,to,up,and,as,but,or,nor".split(",")
@@ -240,7 +242,7 @@ class Actions:
         """Reformats selected phrase"""
         selection = actions.edit.selected_text()
         phrase = formatted_to_phrase(selection)
-        return FormatText(phrase, formatters)
+        return format_phrase(phrase, formatters)
 
 
 @ctx.capture(rule="{self.formatters}+")
