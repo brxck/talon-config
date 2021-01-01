@@ -1,7 +1,4 @@
-import os
-import re
-
-from talon import Context, Module, actions, app, fs, imgui, registry, settings, ui
+from talon import Context, Module, actions, app, imgui, registry, settings
 
 ctx = Context()
 mod = Module()
@@ -21,6 +18,7 @@ setting_protected_variable_formatter = mod.setting(
 setting_public_variable_formatter = mod.setting("code_public_variable_formatter", str)
 
 mod.tag("code_comment", desc="Tag for enabling generic comment commands")
+mod.tag("code_block_comment", desc="Tag for enabling generic block comment commands")
 mod.tag("code_operators", desc="Tag for enabling generic operator commands")
 mod.tag(
     "code_generic",
@@ -34,28 +32,32 @@ extension_lang_map = {
     "asm": "assembly",
     "bat": "batch",
     "c": "c",
+    "cmake": "cmake",
     "cpp": "cplusplus",
     "cs": "csharp",
     "gdb": "gdb",
     "go": "go",
     "h": "c",
     "hpp": "cplusplus",
+    "js": "javascript",
+    "json": "json",
     "lua": "lua",
     "md": "markdown",
     "pl": "perl",
     "ps1": "powershell",
     "py": "python",
+    "r": "r",
     "rb": "ruby",
     "s": "assembly",
     "sh": "bash",
     "snippets": "snippets",
     "talon": "talon",
-    "vba": "vba",
-    "vim": "vim",
-    "js": "javascript",
     "ts": "typescript",
     "vue": "javascript",
     "r": "r",
+    "vba": "vba",
+    "vim": "vimscript",
+    "vimrc": "vimscript",
 }
 
 # flag indicates whether or not the title tracking is enabled
@@ -462,7 +464,7 @@ def update_library_list_and_freeze():
     else:
         library_list = []
 
-    gui_libraries.freeze()
+    gui_libraries.show()
 
 
 def update_function_list_and_freeze():
@@ -472,24 +474,25 @@ def update_function_list_and_freeze():
     else:
         function_list = []
 
-    gui_functions.freeze()
+    gui_functions.show()
 
 
-@imgui.open(software=False)
+@imgui.open(software=app.platform == "linux")
 def gui_functions(gui: imgui.GUI):
     gui.text("Functions")
     gui.line()
 
     # print(str(registry.lists["user.code_functions"]))
     for i, entry in enumerate(function_list, 1):
-        gui.text(
-            "{}. {}: {}".format(
-                i, entry, registry.lists["user.code_functions"][0][entry]
+        if entry in registry.lists["user.code_functions"][0]:
+            gui.text(
+                "{}. {}: {}".format(
+                    i, entry, registry.lists["user.code_functions"][0][entry]
+                )
             )
-        )
 
 
-@imgui.open(software=False)
+@imgui.open(software=app.platform == "linux")
 def gui_libraries(gui: imgui.GUI):
     gui.text("Libraries")
     gui.line()

@@ -2,7 +2,8 @@ import os
 import re
 import time
 
-from talon import Context, Module, app, imgui, ui, fs
+import talon
+from talon import Context, Module, imgui, ui, fs, actions, app
 
 # Construct at startup a list of overides for application names (similar to how homophone list is managed)
 # ie for a given talon recognition word set  `one note`, recognized this in these switcher functions as `ONENOTE`
@@ -10,7 +11,7 @@ from talon import Context, Module, app, imgui, ui, fs
 # TODO: Consider put list csv's (homophones.csv, app_name_overrides.csv) files together in a seperate directory,`knausj_talon/lists`
 cwd = os.path.dirname(os.path.realpath(__file__))
 overrides_directory = os.path.join(cwd, "app_names")
-override_file_name = f"app_name_overrides.{app.platform}.csv"
+override_file_name = f"app_name_overrides.{talon.app.platform}.csv"
 override_file_path = os.path.join(overrides_directory, override_file_name)
 
 
@@ -26,26 +27,18 @@ overrides = {}
 running_application_dict = {}
 
 
-@mod.capture
+@mod.capture(rule="{self.running}")  # | <user.text>)")
 def running_applications(m) -> str:
     "Returns a single application name"
-
-
-@mod.capture
-def launch_applications(m) -> str:
-    "Returns a single application name"
-
-
-@ctx.capture(rule="{self.running}")  # | <user.text>)")
-def running_applications(m):
     try:
         return m.running
     except AttributeError:
         return m.text
 
 
-@ctx.capture(rule="{self.launch}")
-def launch_applications(m):
+@mod.capture(rule="{self.launch}")
+def launch_applications(m) -> str:
+    "Returns a single application name"
     return m.launch
 
 
@@ -108,45 +101,42 @@ fs.watch(overrides_directory, update_overrides)
 
 @mod.action_class
 class Actions:
-    def switcher_focus(name: str):
-        """Focus a new application by  name"""
-
-        wanted_app = name
-
-        # we should use the capture result directly if it's already in the
-        # list of running applications
-        # otherwise, name is from <user.text> and we can be a bit fuzzier
-        if name not in running_application_dict:
-
-            # don't process silly things like "focus i"
+    def get_running_app(name: str) -> ui.App:
+        """Get the first available running app with `name`."""
+        # We should use the capture result directly if it's already in the list
+        # of running applications. Otherwise, name is from <user.text> and we
+        # can be a bit fuzzier
+        if name in running_application_dict:
+            for app in ui.apps():
+                if app.name == name and not app.background:
+                    return app
+            raise RuntimeError(f'App not running: "{name}"')
+        else:
+            # Don't process silly things like "focus i"
             if len(name) < 3:
-                print("switcher_focus skipped: len({}) < 3".format(name))
-                return
+                raise RuntimeError(
+                    f'Skipped getting app: "{name}" has less than 3 chars.'
+                )
 
-            running = ctx.lists["self.running"]
-            wanted_app = None
-
-            for running_name in running.keys():
-
+            for running_name, app in ctx.lists["self.running"].items():
                 if running_name == name or running_name.lower().startswith(
                     name.lower()
                 ):
-                    wanted_app = running[running_name]
-                    break
+                    return app
 
-            if wanted_app is None:
-                return
+            raise RuntimeError(f'Could not find app "{name}"')
 
-        for cur_app in ui.apps():
-            if cur_app.name == wanted_app and not cur_app.background:
-                cur_app.focus()
+    def switcher_focus(name: str):
+        """Focus a new application by  name"""
+        app = actions.self.get_running_app(name)
+        app.focus()
 
-                # there is currently only a reliable way to do this on mac
-                if app.platform == "mac":
-                    while cur_app != ui.active_app():
-                        time.sleep(0.1)
-
-                break
+        # Hacky solution to do this reliably on Mac.
+        timeout = 5
+        t1 = time.monotonic()
+        if talon.app.platform == "mac":
+            while ui.active_app() != app and time.monotonic() - t1 < timeout:
+                time.sleep(0.1)
 
     def switcher_launch(path: str):
         """Launch a new application by path"""
@@ -164,7 +154,7 @@ class Actions:
         gui.hide()
 
 
-@imgui.open(software=False)
+@imgui.open(software=app.platform == "linux")
 def gui(gui: imgui.GUI):
     gui.text("Names of running applications")
     gui.line()
@@ -173,7 +163,7 @@ def gui(gui: imgui.GUI):
 
 
 def update_launch_list():
-    if app.platform == "mac":
+    if talon.app.platform == "mac":
         launch = {}
         for base in (
             "/Applications",
@@ -203,5 +193,9 @@ def ui_event(event, arg):
         update_lists()
 
 
+# Currently update_launch_list only does anything on mac, so we should make sure
+# to initialize user launch to avoid getting "List not found: user.launch"
+# errors on other platforms.
+ctx.lists["user.launch"] = {}
 update_launch_list()
 ui.register("", ui_event)

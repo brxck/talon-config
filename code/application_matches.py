@@ -26,6 +26,11 @@ os: mac
 and app.bundle: com.apple.Terminal
 """
 
+apps.iterm2 = """
+os: mac
+and app.bundle: com.googlecode.iterm2
+"""
+
 # linux specific apps
 apps.keepass = """
 os: linux
@@ -71,4 +76,9 @@ and app.name: cmd.exe
 apps.windows_terminal = """
 os: windows
 and app.name: WindowsTerminal.exe 
+"""
+
+mod.apps.windows_power_shell = """
+os: windows
+and app.name: powershell.exe
 """

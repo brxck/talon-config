@@ -3,16 +3,8 @@ mode: dictation
 #everything here should call auto_insert to preserve the state to correctly auto-capitalize/auto-space.
 <user.text>: auto_insert(text)
 enter: auto_insert("new-line")
-period: auto_insert(".")
-(comma | kama): 
-    auto_insert(",")
-question mark: auto_insert("?")
-(bang | exclamation [mark]): auto_insert("!")
-dash: auto_insert("-")
-colon: auto_insert(":")
-space: user.dictate(" ")
-(semi colon | semicolon): auto_insert(";")
-cap <user.text>: 
+{user.punctuation}: auto_insert(punctuation)
+cap <user.text>:
     result = user.formatted_text(user.text, "CAPITALIZE_FIRST_WORD")
     auto_insert(result)
 #navigation
@@ -70,15 +62,12 @@ formatted <user.format_text>:
 scratch that: user.clear_last_utterance()
 scratch selection: edit.delete()
 select that: user.select_last_utterance()
+spell that <user.letters>: auto_insert(letters)
 spell that <user.formatters> <user.letters>:
-    result = dictate.join_words(user.letters, "")
-    result = user.formatted_text(result, formatters)
+    result = user.formatted_text(letters, formatters)
     user.auto_format_pause()
     auto_insert(result)
     user.auto_format_resume()
-spell that <user.letters>:
-    result = dictate.join_words(user.letters, "")
-    auto_insert(result)
 #escape, type things that would otherwise be commands
 ^escape <user.text>$:
     auto_insert(user.text)
