@@ -1,20 +1,17 @@
-import re
+import os
 import subprocess
-from pathlib import Path
+
 from talon import Module
 
 mod = Module()
-
-unquoted_whitespace_pattern = re.compile(
-    r"\s+(?=(?:[^'\"]*['\"][^'\"]*['\"])*[^'\"]*$)"
-)
 
 
 @mod.action_class
 class Actions:
     def system_command(cmd: str):
-        """Execute a command on the system."""
-        command = unquoted_whitespace_pattern.split(cmd)
-        subprocess.Popen(
-            command, cwd=Path.home(), stdout=subprocess.PIPE, stderr=subprocess.STDOUT
-        )
+        """execute a command on the system"""
+        os.system(cmd)
+
+    def system_command_nb(cmd: str):
+        """execute a command on the system without blocking"""
+        subprocess.Popen(cmd, shell=True)

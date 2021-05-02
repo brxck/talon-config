@@ -6,10 +6,22 @@ is_mac = app.platform == "mac"
 
 ctx = Context()
 mod = Module()
-mod.apps.vscode = "app.name: Code.exe"
-mod.apps.vscode = "app.name: Visual Studio Code"
-mod.apps.vscode = "app.name: Code"
-mod.apps.vscode = "app.name: Code - OSS"
+mod.apps.vscode = """
+os: mac
+and app.bundle: com.microsoft.VSCode
+"""
+mod.apps.vscode = """
+os: linux
+and app.name: Code
+os: linux
+and app.name: code-oss
+"""
+mod.apps.vscode = """
+os: windows
+and app.name: Visual Studio Code
+os: windows
+and app.exe: Code.exe
+"""
 
 ctx.matches = r"title: /.* - Visual Studio Code$/"
 
@@ -59,9 +71,6 @@ class win_actions:
             return result
 
         return ""
-
-    def file_ext():
-        return actions.win.filename().split(".")[-1]
 
 
 @mod.action_class
