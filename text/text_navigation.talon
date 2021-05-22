@@ -1,7 +1,7 @@
 ## (2021-03-09) This syntax is experimental and may change. See below for an explanation.
-navigate [{user.arrow_key}] [{user.navigation_action}] [{user.navigation_target_name}] [{user.before_or_after}] [<user.ordinals>] <user.navigation_target>:
+navigate [{user.arrow_keys_key}] [{user.navigation_action}] [{user.navigation_target_name}] [{user.before_or_after}] [<user.ordinals>] <user.navigation_target>:
 ## If you use this command a lot, you may wish to have a shorter syntax that omits the navigate keyword. Note that you then at least have to say either a navigation_action or before_or_after:
-#({user.navigation_action} [{user.arrow_key}] [{user.navigation_target_name}] [{user.before_or_after}] | [{user.arrow_key}] {user.before_or_after}) [<user.ordinals>] <user.navigation_target>: 
+#({user.navigation_action} [{user.arrow_keys_key}] [{user.navigation_target_name}] [{user.before_or_after}] | [{user.arrow_keys_key}] {user.before_or_after}) [<user.ordinals>] <user.navigation_target>: 
 	user.navigation(navigation_action or "GO", arrow_key or "RIGHT", navigation_target_name or "DEFAULT", before_or_after or "DEFAULT", navigation_target, ordinals or 1)
 
 # ===== Examples of use =====
@@ -39,7 +39,7 @@ navigate [{user.arrow_key}] [{user.navigation_action}] [{user.navigation_target_
 #
 # ===== Explanation of the grammar =====
 #
-# [{user.arrow_key}]: left, right, up, down (default: right)
+# [{user.arrow_keys_key}]: left, right, up, down (default: right)
 #   Which direction to navigate in.
 #   left/right work on the current line.
 #   up/down work on the closest lines (default: 10) above or below.

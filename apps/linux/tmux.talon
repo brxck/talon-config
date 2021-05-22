@@ -43,7 +43,7 @@ mux split vertical:
 mux next pane:
     key(ctrl-b)
     key(o)
-mux move <user.arrow_key>:
+mux move <user.arrow_keys_key>:
     key(ctrl-b)
     key(arrow_key)
 mux close pane:

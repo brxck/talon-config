@@ -1,9 +1,9 @@
-window <user.arrow>:
+window <user.arrow_keys>:
   key(super:down)
   key(arrow)
   key(super:up)
 
-monitor <user.arrow>: 
+monitor <user.arrow_keys>: 
   key(shift:down super:down)
   key(arrow)
   key(super:up shift:up)
@@ -19,5 +19,5 @@ work <digits>:
   key(super:up)
 
 
-quake <user.arrow>:
+quake <user.arrow_keys>:
   user.system_command("tdrop2 kitty {arrow}")

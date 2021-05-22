@@ -50,7 +50,7 @@ focus float:
     key(super-shift-t)
 (window|win) resize:
     key(super-r)
-(window|win) resize <user.arrow>:
+(window|win) resize <user.arrow_keys>:
     key(super-r)
     key(arrow)
     key(super-r)
@@ -61,16 +61,16 @@ focus float:
 (window|win) shrink:
     key(super-r)
     key(left)
-    key(super-r)
+    key(super-r
 (window|win) kill:
     key(super-shift-q)
 (window|win) float:
     key(super-shift-f)
 (window|win) full:
     key(super-f)
-(window|win) move <user.arrow>:
+(window|win) move <user.arrow_keys>:
     key("super-shift-{arrow}")
-(window|win) <user.arrow>:
+(window|win) <user.arrow_keys>:
     key("super-{arrow}")
 (window|win) jump:
     key(super-ctrl-space)

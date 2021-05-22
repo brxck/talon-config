@@ -1,6 +1,4 @@
-import socket
-from time import sleep
-from talon import Context, actions, Module, app
+from talon import Context, actions, ui, Module, app, clip
 
 is_mac = app.platform == "mac"
 
@@ -23,45 +21,19 @@ os: windows
 and app.exe: Code.exe
 """
 
-ctx.matches = r"title: /.* - Visual Studio Code$/"
-
-
-class VSCodeSocket:
-    def __init__(self):
-        self.connect()
-
-    def connect(self):
-        try:
-            self.client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-            self.client.connect("/tmp/vscode_commander.sock")
-        except FileNotFoundError:
-            print("VSCodeSocket: Connection failed. Socket does not exist.")
-        else:
-            print("VSCodeSocket: Connected.")
-
-    def send(self, command):
-        try:
-            self.client.sendall(command.encode("utf-8"))
-        except Exception as error:
-            print(f"VSCodeSocket: {error}")
-            self.client.close()
-            print("VSCodeSocket: Reconnecting...")
-            self.connect()
-            try:
-                self.client.send(command.encode("utf-8"))
-            except Exception:
-                app.notify("VSCode Socket Failed")
-        else:
-            sleep(0.1)
-
-
-vscode_socket = VSCodeSocket()
+ctx.matches = r"""
+app: vscode
+"""
 
 
 @ctx.action_class("win")
 class win_actions:
     def filename():
         title = actions.win.title()
+        # this doesn't seem to be necessary on VSCode for Mac
+        # if title == "":
+        #    title = ui.active_window().doc
+
         if is_mac:
             result = title.split(" — ")[0]
         else:
@@ -73,33 +45,55 @@ class win_actions:
         return ""
 
 
+@ctx.action_class("edit")
+class edit_actions:
+    def find(text=None):
+        if is_mac:
+            actions.key("cmd-f")
+        else:
+            actions.key("ctrl-f")
+        if text is not None:
+            actions.insert(text)
+
+    def line_swap_up():
+        actions.key("alt-up")
+
+    def line_swap_down():
+        actions.key("alt-down")
+
+    def line_clone():
+        actions.key("shift-alt-down")
+
+    def jump_line(n: int):
+        actions.user.vscode("workbench.action.gotoLine")
+        actions.insert(str(n))
+        actions.key("enter")
+        actions.edit.line_start()
+
+
 @mod.action_class
 class Actions:
-    def vscode(command: str):
-        """Execute command via Unix domain socket."""
-        vscode_socket.send(command)
-
-    def vscode_ignore_clipboard(command: str):
-        """Preserved for ease of compatibility."""
-        vscode_socket.send(command)
+    def vscode_terminal(number: int):
+        """Activate a terminal by number"""
+        actions.user.vscode(f"workbench.action.terminal.focusAtIndex{number}")
 
 
 @ctx.action_class("user")
 class user_actions:
-    # snippet.py support begin
+    # snippet.py support beginHelp close
     def snippet_search(text: str):
-        actions.user.vscode("Insert Snippet")
+        actions.user.vscode("editor.action.insertSnippet")
         actions.insert(text)
 
     def snippet_insert(text: str):
         """Inserts a snippet"""
-        actions.user.vscode("Insert Snippet")
+        actions.user.vscode("editor.action.insertSnippet")
         actions.insert(text)
         actions.key("enter")
 
     def snippet_create():
         """Triggers snippet creation"""
-        actions.user.vscode("Preferences: Configure User Snippets")
+        actions.user.vscode("workbench.action.openSnippets")
 
     # snippet.py support end
 
@@ -140,10 +134,10 @@ class user_actions:
             actions.insert(text)
 
     def find_next():
-        actions.key("enter")
+        actions.user.vscode("editor.action.nextMatchFindAction")
 
     def find_previous():
-        actions.key("shift-enter")
+        actions.user.vscode("editor.action.previousMatchFindAction")
 
     def find_everywhere(text: str):
         """Triggers find across project"""
@@ -219,5 +213,11 @@ class user_actions:
         actions.edit.find(text)
         actions.sleep("100ms")
         actions.key("esc")
+
+    # def select_next_token():
+    #     actions.edit.find("")
+    #     actions.key("enter")
+    #     actions.key("enter")
+    #     actions.key("esc")
 
     # find_and_replace.py support end
